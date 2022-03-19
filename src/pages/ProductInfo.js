@@ -43,9 +43,9 @@ function ProductInfo() {
   return (
     <Layout loading={loading}>
       <h1>Product Info</h1>
-      <div className="container d-flex">
-        <div className="d-flex flex-column justify-content-center">
-          <div className="col-md-8">
+      <div className="container d-flex justify-content-center">
+        <div className="justify-content-center">
+          <div className="col-md-12">
             {product && (
               <div>
                 <h2>
