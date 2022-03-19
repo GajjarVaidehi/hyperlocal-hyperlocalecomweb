@@ -11,8 +11,8 @@ function HomePage() {
   const [products, setProducts] = useState([]);
   const { cartItems } = useSelector((state) => state.cartReducer);
   const [loading, setLoading] = useState(false);
-  const [searchKey, setSearchKey] = useState('')
-  const [filterType, setFilterType] = useState('')
+  const [searchKey, setSearchKey] = useState("");
+  const [filterType, setFilterType] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function HomePage() {
 
   async function getData() {
     try {
-      setLoading(true)
+      setLoading(true);
 
       const users = await getDocs(collection(fireDB, "products"));
       const productsArray = [];
@@ -33,12 +33,12 @@ function HomePage() {
         };
 
         productsArray.push(obj);
-        setLoading(false)
+        setLoading(false);
       });
       setProducts(productsArray);
     } catch (error) {
       console.log(error);
-      setLoading(false)
+      setLoading(false);
     }
   }
 
@@ -53,12 +53,23 @@ function HomePage() {
   return (
     <Layout loading={loading}>
       <div className="container">
-        <div className="d-flex w-50 align-items-center my-3 justify-content-center" >
-          <input type="text" value={searchKey}
-            onChange={(e) => { setSearchKey(e.target.value) }}
-            className="form-control mx-2" placeholder="'Search Items" />
-          <select className="form-control mt-3" value={filterType}
-            onChange={(e) => { setFilterType(e.target.value) }}>
+        <div className="d-flex w-50 align-items-center my-3 justify-content-center">
+          <input
+            type="text"
+            value={searchKey}
+            onChange={(e) => {
+              setSearchKey(e.target.value);
+            }}
+            className="form-control mx-2"
+            placeholder="'Search Items"
+          />
+          <select
+            className="form-control mt-3"
+            value={filterType}
+            onChange={(e) => {
+              setFilterType(e.target.value);
+            }}
+          >
             <option value="">All</option>
             <option value="sport">Sport</option>
             <option value="toy">Toy</option>
@@ -67,7 +78,7 @@ function HomePage() {
         </div>
         <div className="row">
           {products
-            .filter(obj => obj.name.toLowerCase().includes(searchKey))
+            .filter((obj) => obj.name.toLowerCase().includes(searchKey))
             .filter((obj) => obj.category.toLowerCase().includes(filterType))
             .map((product) => {
               return (
@@ -94,7 +105,7 @@ function HomePage() {
                         </button>
                         <button
                           onClick={() => {
-                            navigate("/productinfo/${product.id}");
+                            navigate(`/productinfo/${product.id}`);
                           }}
                         >
                           VIEW

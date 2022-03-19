@@ -6,9 +6,9 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 function ProductInfo() {
-  const [product, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cartReducer);
 
   const params = useParams();
@@ -23,7 +23,8 @@ function ProductInfo() {
       const productTemp = await getDoc(
         doc(fireDB, "products", params.productid)
       );
-      setProducts(productTemp.data());
+      setProduct(productTemp.data());
+      console.log(productTemp.data());
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -32,6 +33,7 @@ function ProductInfo() {
   }
 
   const addToCart = (product) => {
+    console.log(product);
     dispatch({ type: "ADD_TO_CART", payload: product });
   };
   useEffect(() => {
@@ -41,26 +43,28 @@ function ProductInfo() {
   return (
     <Layout loading={loading}>
       <h1>Product Info</h1>
-      <div className="container">
-        <div className="row justify-content-center">
+      <div className="container d-flex">
+        <div className="d-flex flex-column justify-content-center">
           <div className="col-md-8">
             {product && (
               <div>
-                <p>
+                <h2>
                   <b>{product.name}</b>
-                </p>
+                </h2>
 
                 <img src={product.imageURL} className="product-info-img" />
                 <hr />
-                <p>product.description</p>
-                <div className="d-flex justify-content-end my-3">
-                  <button onClick={() => addToCart(product)}>
-                    ADD TO CART
-                  </button>
-                </div>
               </div>
             )}
           </div>
+          {product && (
+            <div className="d-flex flex-column align-items-center justify-content-center">
+              <h5>{product.description}</h5>
+              <div className="d-flex flex-column align-items-center justify-content-center my-3">
+                <button onClick={() => addToCart(product)}>ADD TO CART</button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </Layout>
