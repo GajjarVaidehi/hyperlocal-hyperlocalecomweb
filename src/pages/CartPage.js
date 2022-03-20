@@ -112,12 +112,11 @@ function CartPage() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add your address</Modal.Title>
+          <Modal.Title>ADD YOUR ADDRESS DETAILS</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {" "}
           <div className="register-form">
-            <h2>Register</h2>
             <hr />
 
             <input
