@@ -103,6 +103,7 @@ function HomePage() {
                         >
                           ADD TO CART
                         </button>
+                        <button className="mx-2">ADD TO WISHLIST</button>
                         <button
                           onClick={() => {
                             navigate(`/productinfo/${product.id}`);

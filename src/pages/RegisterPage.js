@@ -7,7 +7,8 @@ import { toast } from "react-toastify";
 function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cpassword, setcPassword] = useState("");
+  const [name, setName] = useState("");
+  const [cno, setcNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
 
@@ -23,8 +24,9 @@ function RegisterPage() {
       setLoading(false);
       toast.success("Registration Successful");
       setEmail("");
+      setName("");
+      setcNumber("");
       setPassword("");
-      setcPassword("");
     } catch (error) {
       console.log(error);
       toast.error("Registration Failed");
@@ -50,7 +52,6 @@ function RegisterPage() {
           <div className="register-form">
             <h2>Register</h2>
             <hr />
-
             <input
               type="text"
               className="form-control"
@@ -58,6 +59,24 @@ function RegisterPage() {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Contact Number"
+              value={cno}
+              onChange={(e) => {
+                setcNumber(e.target.value);
               }}
             />
             <input
@@ -69,15 +88,7 @@ function RegisterPage() {
                 setPassword(e.target.value);
               }}
             />
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Confirm Password"
-              value={cpassword}
-              onChange={(e) => {
-                setcPassword(e.target.value);
-              }}
-            />
+
             <button className="my-3 " onClick={register}>
               REGISTER
             </button>
