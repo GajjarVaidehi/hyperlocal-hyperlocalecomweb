@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OrdersPage from "./pages/OrdersPage";
 import AdminPage from "./pages/AdminPage";
+import ShopkeeperPage from "./pages/ShopkeeperPage";
 
 function App() {
   return (
@@ -85,6 +86,16 @@ function App() {
             element={
               <ProtectedRoutes>
                 <AdminPage />
+              </ProtectedRoutes>
+            }
+          />
+
+          <Route
+            path="/shopkeeper"
+            exact
+            element={
+              <ProtectedRoutes>
+                <ShopkeeperPage />
               </ProtectedRoutes>
             }
           />
