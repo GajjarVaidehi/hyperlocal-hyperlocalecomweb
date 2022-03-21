@@ -150,7 +150,7 @@ function AdminPage() {
               </tr>
             </thead>
             <tbody>
-              {products.map((item) => {
+              {products.map((item, index) => {
                 return (
                   <tr>
                     <td>
@@ -167,7 +167,7 @@ function AdminPage() {
                       />
 
                       <FaEdit
-                        onClick={() => editHandler(product)}
+                        onClick={() => editHandler(item)}
                         color="blue"
                         size={20}
                       />
