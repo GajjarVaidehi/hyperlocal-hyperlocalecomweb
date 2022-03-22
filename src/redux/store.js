@@ -8,5 +8,8 @@ const initialStore = {
   cartReducer: {
     cartItems: JSON.parse(localStorage.getItem("cartItems")) ?? [],
   },
+  wishlistReducer: {
+    wishlistItems: JSON.parse(localStorage.getItem("wishlistItems")) ?? [],
+  }
 };
 export const store = createStore(rootReducer, initialStore, composeEnhancers());

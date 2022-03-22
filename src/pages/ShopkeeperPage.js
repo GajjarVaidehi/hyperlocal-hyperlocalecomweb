@@ -56,7 +56,17 @@ function ShopkeeperPage() {
         <Tab eventKey="profile" title="Profile">
           <div className="text-field">
             <br />
-            <h5>Full Name : </h5>
+            <h5>Shop Name : </h5>
+            <input
+              type="text"
+              className="form-control"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+            <br />
+            <h5>Shopkeeper's Name : </h5>
             <input
               type="text"
               className="form-control"
@@ -76,7 +86,7 @@ function ShopkeeperPage() {
               }}
             />
             <br />
-            <h5>Address :</h5>
+            <h5> Shop Address :</h5>
             <textArea
               className="form-control"
               rows={3}
@@ -97,11 +107,7 @@ function ShopkeeperPage() {
               }}
             />
             <hr />
-            <hr />
 
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
 
             <Button variant="primary" onClick={ProfilePage}>
               UPDATE

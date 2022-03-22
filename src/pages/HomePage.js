@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 function HomePage() {
   const [products, setProducts] = useState([]);
   const { cartItems } = useSelector((state) => state.cartReducer);
+  const { wishlistItems } = useSelector((state) => state.wishlistReducer);
   const [loading, setLoading] = useState(false);
   const [searchKey, setSearchKey] = useState("");
   const [filterType, setFilterType] = useState("");
@@ -44,10 +45,15 @@ function HomePage() {
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
+    localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
+  }, [cartItems], [wishlistItems]);
 
   const addToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
+  };
+
+  const addToWishlist = (product) => {
+    dispatch({ type: "ADD_TO_WISHLIST", payload: product });
   };
 
   return (
@@ -103,7 +109,9 @@ function HomePage() {
                         >
                           ADD TO CART
                         </button>
-                        <button className="mx-2">ADD TO WISHLIST</button>
+                        <button className="mx-2" onClick={() => addToWishlist(product)}>
+                          ADD TO WISHLIST
+                        </button>
                         <button
                           onClick={() => {
                             navigate(`/productinfo/${product.id}`);

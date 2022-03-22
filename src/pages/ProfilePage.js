@@ -15,7 +15,7 @@ function ProfilePage() {
   const handleShow = () => setShow(true);
 
   return (
-    <Layout>
+    <Layout >
       <div className="text-field">
         <br />
         <h5>Full Name : </h5>
@@ -61,9 +61,7 @@ function ProfilePage() {
         <hr />
         <hr />
 
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
+
 
         <Button variant="primary" onClick={ProfilePage}>
           UPDATE

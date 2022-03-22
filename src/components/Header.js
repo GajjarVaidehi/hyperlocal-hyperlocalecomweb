@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaUser } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaHeart } from "react-icons/fa";
 
 function Header() {
   const { cartItems } = useSelector((state) => state.cartReducer);
+  const { wishlistItems } = useSelector((state) => state.wishlistReducer);
   const { user } = JSON.parse(localStorage.getItem("currentUser"));
 
   const logout = () => {
@@ -52,7 +53,7 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/wishlist">
-                  Wishlist
+                  <FaHeart /> {wishlistItems.length}
                 </Link>
               </li>
               <li className="nav-item">

@@ -8,6 +8,8 @@ import ProfilePage from "./pages/ProfilePage";
 import ProductInfo from "./pages/ProductInfo";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
+import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage"
+import ShopkeeperRegisterPage from "./pages/ShopkeeperRegisterPage"
 
 import "./stylesheets/layout.css";
 import "./stylesheets/products.css";
@@ -96,6 +98,28 @@ function App() {
             element={
               <ProtectedRoutes>
                 <ShopkeeperPage />
+              </ProtectedRoutes>
+            }
+          />
+
+
+          <Route
+            path="/shopkeeperregisterpage"
+            exact
+            element={
+              <ProtectedRoutes>
+                <ShopkeeperRegisterPage />
+              </ProtectedRoutes>
+            }
+          />
+
+
+          <Route
+            path="/shopkeeperloginpage"
+            exact
+            element={
+              <ProtectedRoutes>
+                <ShopkeeperLoginPage />
               </ProtectedRoutes>
             }
           />
