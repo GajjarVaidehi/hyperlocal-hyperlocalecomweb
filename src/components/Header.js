@@ -52,11 +52,6 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/wishlist">
-                  <FaHeart /> {wishlistItems.length}
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={logout}>
                   Logout
                 </Link>
@@ -64,6 +59,11 @@ function Header() {
               <li className="nav-item">
                 <Link className="nav-link" to="/cart">
                   <FaCartPlus /> {cartItems.length}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/wishlist">
+                  <FaHeart /> {wishlistItems.length}
                 </Link>
               </li>
             </ul>

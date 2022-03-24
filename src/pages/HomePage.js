@@ -43,10 +43,14 @@ function HomePage() {
     }
   }
 
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
-  }, [cartItems], [wishlistItems]);
+  useEffect(
+    () => {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      localStorage.setItem("wishlistItems", JSON.stringify(wishlistItems));
+    },
+    [cartItems],
+    [wishlistItems]
+  );
 
   const addToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
@@ -109,7 +113,10 @@ function HomePage() {
                         >
                           ADD TO CART
                         </button>
-                        <button className="mx-2" onClick={() => addToWishlist(product)}>
+                        <button
+                          className="mx-2"
+                          onClick={() => addToWishlist(product)}
+                        >
                           ADD TO WISHLIST
                         </button>
                         <button

@@ -103,7 +103,7 @@ function CartPage() {
       </table>
 
       <div className="d-flex justify-content-end">
-        <h1 className="total-amount">Total Amount = Rs.{totalAmount} /-</h1>
+        <h4 className="total-amount">Total Amount = Rs.{totalAmount} /-</h4>
       </div>
 
       <div className="d-flex justify-content-end mt-3">

@@ -111,7 +111,7 @@ function ShopkeeperRegisterPage() {
               REGISTER
             </button>
             <hr />
-            <Link to="/login">Click Here to Login</Link>
+            <Link to="/shopkeeperloginpage">Click Here to Login</Link>
           </div>
         </div>
       </div>
