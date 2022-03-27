@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-
+import {
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
+import fireDB from "../fireConfig";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 
@@ -16,10 +24,11 @@ function ShopkeeperLoginPage() {
     try {
       setLoading(true);
       const result = await signInWithEmailAndPassword(auth, email, password);
-      localStorage.setItem("currentUser", JSON.stringify(result));
+      console.log(result);
+      localStorage.setItem("currentShopUser", JSON.stringify(result));
       setLoading(false);
       toast.success("Login Successful");
-      window.location.href = "/";
+      window.location.href = "/shopkeeper";
     } catch (error) {
       console.log(error);
       toast.error("Login Failed");
@@ -58,7 +67,7 @@ function ShopkeeperLoginPage() {
               Login
             </button>
             <hr />
-            <Link to="/shopkeeperregisterpage">Click Here to Register</Link>
+            <Link to="/shopkeeper/register">Click Here to Register</Link>
           </div>
         </div>
         <div className="col-md-5 z1">

@@ -1,31 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Layout from "../components/Layout";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import fireDB from "../fireConfig";
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import { Tabs, Tab, Button } from "react-bootstrap";
-import ProfilePage from "./ProfilePage";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { Modal, Button, Tabs, Tab } from "react-bootstrap";
+import { toast } from "react-toastify";
 
-function ShopkeeperPage() {
-  const [show, setShow] = useState(false);
+function AdminPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [phoneNo, setPhoneNo] = useState("");
-  const [email, setEmail] = useState("");
-
+  const data = JSON.parse(localStorage.getItem("currentShopUser"));
+  const email = data.user.email;
+  const ownerShop = data.user.shopName;
+  const [product, setProduct] = useState({
+    name: "",
+    price: 0,
+    imageURL: "",
+    category: "",
+    ownerId: data.user.uid,
+    ownerShop: ownerShop,
+  });
+  const [show, setShow] = useState(false);
+  const [add, setAdd] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
+  useEffect(async () => {
+    const users = await getDocs(collection(fireDB, "shopkeepers"));
+    users.forEach((doc) => {
+      if (doc.data().email === email) {
+        setProduct({
+          ...product,
+          ownerShop: doc.data().shopName,
+        });
+      }
+    });
     getData();
   }, []);
 
   async function getData() {
     try {
       setLoading(true);
-
       const users = await getDocs(collection(fireDB, "products"));
       const productsArray = [];
       users.forEach((doc) => {
@@ -44,80 +67,223 @@ function ShopkeeperPage() {
     }
   }
 
+  useEffect(() => {
+    getOrdersData();
+  }, []);
+
+  async function getOrdersData() {
+    try {
+      setLoading(true);
+
+      const result = await getDocs(collection(fireDB, "orders"));
+      const ordersArray = [];
+      result.forEach((doc) => {
+        ordersArray.push(doc.data());
+        setLoading(false);
+      });
+      setOrders(ordersArray);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  }
+
+  const editHandler = (item) => {
+    setProduct(item);
+
+    setShow(true);
+  };
+
+  const updateProduct = async () => {
+    try {
+      setLoading(true);
+      await setDoc(doc(fireDB, "products", product.id), product);
+
+      handleClose();
+      toast.success("Product Updated Succesfully");
+      window.location.reload();
+    } catch (error) {
+      toast.error("Product Update Failed");
+      setLoading(false);
+    }
+  };
+
+  const addProduct = async () => {
+    try {
+      setLoading(true);
+      await addDoc(collection(fireDB, "products"), product);
+
+      handleClose();
+      toast.success("Product Added Succesfully");
+      window.location.reload();
+    } catch (error) {
+      toast.error("Product Add Failed");
+      setLoading(false);
+    }
+  };
+
+  const deleteProduct = async (item) => {
+    try {
+      setLoading(true);
+      await deleteDoc(doc(fireDB, "products", item.id));
+      toast.success("Product deleted succesfully");
+      getData();
+    } catch (error) {
+      toast.error("Product deletion failed");
+      setLoading(false);
+    }
+  };
+
+  const addHandler = () => {
+    setAdd(true);
+    handleShow();
+  };
+
   return (
     <Layout loading={loading}>
       <Tabs
-        defaultActiveKey="product"
+        defaultActiveKey="products"
         id="uncontrolled-tab-example"
         className="mb-3"
       >
-        <Tab eventKey="product" title="Product"></Tab>
-        <Tab eventKey="order" title="Order"></Tab>
-        <Tab eventKey="profile" title="Profile">
-          <div className="text-field">
-            <br />
-            <h5>Shop Name : </h5>
-            <input
-              type="text"
-              className="form-control"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <br />
-            <h5>Shopkeeper's Name : </h5>
-            <input
-              type="text"
-              className="form-control"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <br />
-            <h5>Email ID :</h5>
-            <input
-              type="email"
-              className="form-control"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-            <br />
-            <h5> Shop Address :</h5>
-            <textArea
-              className="form-control"
-              rows={3}
-              type="text"
-              value={address}
-              onChange={(e) => {
-                setAddress(e.target.value);
-              }}
-            />
-            <br />
-            <h5>Contact Number :</h5>
-            <input
-              type="text"
-              className="form-control"
-              value={phoneNo}
-              onChange={(e) => {
-                setPhoneNo(e.target.value);
-              }}
-            />
-            <hr />
-
-
-            <Button variant="primary" onClick={ProfilePage}>
-              UPDATE
-            </Button>
-            <hr />
+        <Tab eventKey="products" title="Products">
+          <div className="d-flex justify-content-between">
+            <h3>Products List</h3>
+            <button onClick={addHandler}>Add Product</button>
           </div>
+          <table className="table mt-3">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products
+                .filter((item) => item.ownerId === data.user.uid)
+                .map((item) => {
+                  return (
+                    <tr>
+                      <td>
+                        <img src={item.imageURL} height="80" width="80" />
+                      </td>
+                      <td>{item.name}</td>
+                      <td>{item.category}</td>
+                      <td>{item.price}</td>
+                      <td>
+                        <FaTrash
+                          color="red"
+                          size={20}
+                          onClick={() => deleteProduct(item)}
+                        />
+
+                        <FaEdit
+                          onClick={() => editHandler(item)}
+                          color="blue"
+                          size={20}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {add == true ? "Add a product" : "Edit Product"}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {" "}
+              <div className="register-form">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Name"
+                  value={product.name}
+                  onChange={(e) =>
+                    setProduct({ ...product, name: e.target.value })
+                  }
+                />
+                <input
+                  className="form-control"
+                  type="text"
+                  placeholder="Image URL"
+                  value={product.imageURL}
+                  onChange={(e) =>
+                    setProduct({ ...product, imageURL: e.target.value })
+                  }
+                />
+
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Price"
+                  value={product.price}
+                  onChange={(e) =>
+                    setProduct({ ...product, price: e.target.value })
+                  }
+                />
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Category"
+                  value={product.category}
+                  onChange={(e) =>
+                    setProduct({ ...product, category: e.target.value })
+                  }
+                />
+                <hr />
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              {add ? (
+                <button onClick={addProduct}>SAVE</button>
+              ) : (
+                <button onClick={updateProduct}>SAVE</button>
+              )}
+            </Modal.Footer>
+          </Modal>
         </Tab>
+        <Tab eventKey="orders" title="Orders">
+          {orders.map((order) => {
+            return (
+              <table className="table mt-3 order">
+                <tbody>
+                  {order.cartItems
+                    .filter((cartItem) => {
+                      return cartItem.ownerId === data.user.uid;
+                    })
+                    .map((item) => {
+                      return (
+                        <tr>
+                          <td>
+                            <img src={item.imageURL} height="80" width="80" />
+                          </td>
+                          <td>{item.name}</td>
+                          <td>{item.price}</td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </table>
+            );
+          })}
+        </Tab>
+        <Tab eventKey="user" title="User" disabled></Tab>
+        <Tab eventKey="shop" title="Shop" disabled></Tab>
       </Tabs>
     </Layout>
   );
 }
 
-export default ShopkeeperPage;
+export default AdminPage;
+//hello

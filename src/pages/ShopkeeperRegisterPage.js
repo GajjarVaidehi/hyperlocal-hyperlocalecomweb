@@ -1,20 +1,39 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
+import fireDB from "../fireConfig";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
 
 function ShopkeeperRegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [shopName, setShopName] = useState("");
   const [name, setName] = useState("");
   const [cno, setcNumber] = useState("");
+  const [shopAddress, setShopAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
 
   const register = async () => {
     try {
       setLoading(true);
+      const user = await addDoc(collection(fireDB, "shopkeepers"), {
+        email,
+        password,
+        shopName,
+        name,
+        cno,
+        shopAddress,
+      });
       const result = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -25,6 +44,8 @@ function ShopkeeperRegisterPage() {
       toast.success("Registration Successful");
       setEmail("");
       setName("");
+      setShopName("");
+      setShopAddress("");
       setcNumber("");
       setPassword("");
     } catch (error) {
@@ -56,18 +77,18 @@ function ShopkeeperRegisterPage() {
               type="text"
               className="form-control"
               placeholder="Shop Name"
-              value={email}
+              value={shopName}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setShopName(e.target.value);
               }}
             />
             <input
               type="text"
               className="form-control"
               placeholder="Owner Name"
-              value={email}
+              value={name}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setName(e.target.value);
               }}
             />
             <input
@@ -82,10 +103,10 @@ function ShopkeeperRegisterPage() {
             <input
               type="text-area"
               className="form-control"
-              placeholder="Shop's Address"
-              value={name}
+              placeholder="Shop Address"
+              value={shopAddress}
               onChange={(e) => {
-                setName(e.target.value);
+                setShopAddress(e.target.value);
               }}
             />
             <input
@@ -111,7 +132,7 @@ function ShopkeeperRegisterPage() {
               REGISTER
             </button>
             <hr />
-            <Link to="/shopkeeperloginpage">Click Here to Login</Link>
+            <Link to="/shopkeeper/login">Click Here to Login</Link>
           </div>
         </div>
       </div>

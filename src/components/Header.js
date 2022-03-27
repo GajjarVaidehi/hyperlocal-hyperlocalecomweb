@@ -7,10 +7,19 @@ import { FaCartPlus, FaHeart } from "react-icons/fa";
 function Header() {
   const { cartItems } = useSelector((state) => state.cartReducer);
   const { wishlistItems } = useSelector((state) => state.wishlistReducer);
-  const { user } = JSON.parse(localStorage.getItem("currentUser"));
-
+  const { user } =
+    localStorage.getItem("currentUser") != null
+      ? JSON.parse(localStorage.getItem("currentUser"))
+      : "";
+  const shopkeeper = JSON.parse(localStorage.getItem("currentShopUser"));
+  console.log(shopkeeper);
   const logout = () => {
-    localStorage.removeItem("currentUser");
+    if (localStorage.getItem("currentUser")) {
+      localStorage.removeItem("currentUser");
+    }
+    if (localStorage.getItem("currentShopUser")) {
+      localStorage.removeItem("currentShopUser");
+    }
     window.location.reload();
   };
 
@@ -40,32 +49,39 @@ function Header() {
                 <Link
                   className="nav-link active"
                   aria-current="page"
-                  to="/profile"
+                  to="/shopkeeper/profile"
                 >
                   <FaUser />
-                  {user.email.substring(0, user.email.length - 10)}
+                  {user && user.email.substring(0, user.email.length - 10)}
+                  {shopkeeper && shopkeeper.user.email}
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/orders">
-                  Orders
-                </Link>
-              </li>
+              {!shopkeeper && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/orders">
+                    Orders
+                  </Link>
+                </li>
+              )}
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={logout}>
                   Logout
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cart">
-                  <FaCartPlus /> {cartItems.length}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/wishlist">
-                  <FaHeart /> {wishlistItems.length}
-                </Link>
-              </li>
+              {!shopkeeper && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/cart">
+                    <FaCartPlus /> {cartItems.length}
+                  </Link>
+                </li>
+              )}
+              {!shopkeeper && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/wishlist">
+                    <FaHeart /> {wishlistItems.length}
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

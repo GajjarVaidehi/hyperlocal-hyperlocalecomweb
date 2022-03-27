@@ -8,8 +8,8 @@ import ProfilePage from "./pages/ProfilePage";
 import ProductInfo from "./pages/ProductInfo";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
-import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage"
-import ShopkeeperRegisterPage from "./pages/ShopkeeperRegisterPage"
+import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage";
+import ShopkeeperRegisterPage from "./pages/ShopkeeperRegisterPage";
 
 import "./stylesheets/layout.css";
 import "./stylesheets/products.css";
@@ -96,36 +96,24 @@ function App() {
             path="/shopkeeper"
             exact
             element={
-              <ProtectedRoutes>
+              <ProtectedShopkeeperRoutes>
                 <ShopkeeperPage />
-              </ProtectedRoutes>
-            }
-          />
-
-
-          <Route
-            path="/shopkeeperregisterpage"
-            exact
-            element={
-              <ProtectedRoutes>
-                <ShopkeeperRegisterPage />
-              </ProtectedRoutes>
-            }
-          />
-
-
-          <Route
-            path="/shopkeeperloginpage"
-            exact
-            element={
-              <ProtectedRoutes>
-                <ShopkeeperLoginPage />
-              </ProtectedRoutes>
+              </ProtectedShopkeeperRoutes>
             }
           />
 
           <Route path="/login" exact element={<LoginPage />} />
           <Route path="/register" exact element={<RegisterPage />} />
+          <Route
+            path="/shopkeeper/register"
+            exact
+            element={<ShopkeeperRegisterPage />}
+          />
+          <Route
+            path="/shopkeeper/login"
+            exact
+            element={<ShopkeeperLoginPage />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
@@ -139,5 +127,12 @@ export const ProtectedRoutes = ({ children }) => {
     return children;
   } else {
     return <Navigate to="/login" />;
+  }
+};
+export const ProtectedShopkeeperRoutes = ({ children }) => {
+  if (localStorage.getItem("currentShopUser")) {
+    return children;
+  } else {
+    return <Navigate to="/shopkeeper/login" />;
   }
 };

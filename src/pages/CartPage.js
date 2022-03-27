@@ -28,7 +28,7 @@ function CartPage() {
   useEffect(() => {
     let temp = 0;
     cartItems.forEach((cartItems) => {
-      temp = temp + cartItems.price;
+      temp = temp + parseInt(cartItems.price);
     });
     setTotalAmount(temp);
   }, [cartItems]);
@@ -49,14 +49,13 @@ function CartPage() {
     };
 
     console.log(addressInfo);
-
     const orderInfo = {
       cartItems,
       addressInfo,
       email: JSON.parse(localStorage.getItem("currentUser")).user.email,
       userid: JSON.parse(localStorage.getItem("currentUser")).user.uid,
+      ownerIds: cartItems.map((item) => item.ownerId),
     };
-
     try {
       setLoading(true);
       const result = await addDoc(collection(fireDB, "orders"), orderInfo);
@@ -81,6 +80,8 @@ function CartPage() {
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
+
+            <th>Shop</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -93,6 +94,8 @@ function CartPage() {
                 </td>
                 <td>{item.name}</td>
                 <td>{item.price}</td>
+
+                <td>{item.ownerShop}</td>
                 <td>
                   <FaTrash onClick={() => deleteFromCart(item)} />
                 </td>

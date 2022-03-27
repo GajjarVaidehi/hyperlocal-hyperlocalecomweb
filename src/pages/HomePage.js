@@ -96,6 +96,7 @@ function HomePage() {
                   <div className="m-2 p-1 product position-relative">
                     <div className="product-content">
                       <p>{product.name}</p>
+                      <p>{product.ownerShop}</p>
                       <div className="text-center">
                         <img
                           src={product.imageURL}
