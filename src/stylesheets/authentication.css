@@ -71,3 +71,7 @@ input,textarea{
      background-color: #003F5C;
      z-index: 0 !important;
 }
+
+.register-choice{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

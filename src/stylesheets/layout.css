@@ -33,19 +33,34 @@
   left: 0;
   right: 0;
 }
-
+/* 
 button {
   background-color: #023247;
   box-sizing: none;
   border: 1 px solid rgb(233, 221, 221);
   color: white;
   padding: 5px;
-}
-
+} */
+/* 
 button:hover {
   background-color: rgb(175, 110, 98);
+} */
+
+
+button{
+  background-color: rgb(147, 198, 240);
+  box-sizing: none;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+ 
+  
 }
 
+button:hover{
+  background-color: rgb(17, 22, 94);
+}
 .loader {
   position: absolute;
   top: 50%;
@@ -90,3 +105,13 @@ select {
   box-sizing: border-box;
   box-shadow: #aaa;
 }
+
+
+.col-md-4{
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  z-index: 0 !important;
+}
+
