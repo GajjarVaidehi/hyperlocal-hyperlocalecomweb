@@ -297,8 +297,7 @@ function AdminPage() {
             );
           })}
         </Tab>
-        <Tab eventKey="user" title="User" disabled></Tab>
-        <Tab eventKey="shop" title="Shop" disabled></Tab>
+
       </Tabs>
     </Layout>
   );

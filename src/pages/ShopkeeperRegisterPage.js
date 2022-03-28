@@ -24,6 +24,7 @@ function ShopkeeperRegisterPage() {
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
 
+
   const register = async () => {
     try {
       setLoading(true);
@@ -142,6 +143,8 @@ function ShopkeeperRegisterPage() {
                 setPassword(e.target.value);
               }}
             />
+
+
 
             <button className="my-3 " onClick={register}>
               REGISTER

@@ -119,3 +119,20 @@ textarea{
   display: block;
 margin: 10px;
 }
+
+.profile-pic{
+  height: 200px;
+  width: 200px;
+ 
+}
+
+#file{
+  display: none;
+}
+
+#uploadBtn{
+  height: 40px;
+  width: 100%;
+  bottom: 0;
+  left:50%;
+}

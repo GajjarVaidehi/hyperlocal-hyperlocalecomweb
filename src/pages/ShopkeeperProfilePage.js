@@ -126,6 +126,8 @@ function ShopkeeperProfilePage() {
                         setPhoneNo(e.target.value);
                     }}
                 />
+
+
                 <br />
 
                 <button variant="primary" onClick={updateInfo}>
