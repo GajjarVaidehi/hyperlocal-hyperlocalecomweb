@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
+import fireDB from "../fireConfig";
 
 function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -20,7 +29,12 @@ function RegisterPage() {
         email,
         password
       );
-      console.log(result);
+      const user = {
+        name: name,
+        cno: cno,
+        email: email,
+      };
+      await addDoc(collection(fireDB, "users"), user);
       setLoading(false);
       toast.success("Registration Successful");
       setEmail("");

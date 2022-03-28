@@ -49,7 +49,7 @@ function Header() {
                 <Link
                   className="nav-link active"
                   aria-current="page"
-                  to="/shopkeeper/profile"
+                  to="/profile"
                 >
                   <FaUser />
                   {user && user.email.substring(0, user.email.length - 10)}

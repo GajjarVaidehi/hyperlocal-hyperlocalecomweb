@@ -19,7 +19,6 @@ import "react-toastify/dist/ReactToastify.css";
 import OrdersPage from "./pages/OrdersPage";
 import AdminPage from "./pages/AdminPage";
 import ShopkeeperPage from "./pages/ShopkeeperPage";
-import FirstPage from "./pages/FirstPage";
 
 function App() {
   return (
@@ -102,11 +101,7 @@ function App() {
               </ProtectedShopkeeperRoutes>
             }
           />
-          <Route
-            path="/first"
-            exact
-            element={<FirstPage />}
-          />
+
           <Route path="/login" exact element={<LoginPage />} />
           <Route path="/register" exact element={<RegisterPage />} />
           <Route
