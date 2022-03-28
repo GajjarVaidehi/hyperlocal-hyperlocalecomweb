@@ -15,6 +15,7 @@ function ProfilePage() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
+
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,6 +29,7 @@ function ProfilePage() {
     await setDoc(doc(fireDB, "users", id), {
       name: name,
       cno: phoneNo,
+      address: address,
       email: email,
     });
     toast.success("Profile Updated");
@@ -41,6 +43,7 @@ function ProfilePage() {
         setId(doc.id);
         setName(doc.data().name);
         setPhoneNo(doc.data().cno);
+        setAddress(doc.data().address);
         setEmail(doc.data().email);
       }
     });
@@ -53,7 +56,7 @@ function ProfilePage() {
 
   return (
     <Layout>
-      <div className="text-field">
+      <div className="update-profile">
         <br />
         <h5>Full Name : </h5>
         <input
@@ -86,13 +89,24 @@ function ProfilePage() {
             setPhoneNo(e.target.value);
           }}
         />
-        <hr />
-        <hr />
 
+        <br />
+
+        <h5>Address :</h5>
+        <textarea
+          type="text"
+          rows={3}
+          className="form-control"
+          value={address}
+          onChange={(e) => {
+            setAddress(e.target.value);
+          }}
+        />
+        <hr />
         <Button variant="primary" onClick={updateInfo}>
           UPDATE
         </Button>
-        <hr />
+
       </div>
     </Layout>
   );

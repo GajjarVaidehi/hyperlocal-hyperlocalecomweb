@@ -139,6 +139,10 @@ function AdminPage() {
     handleShow();
   };
 
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
   return (
     <Layout loading={loading}>
       <Tabs
@@ -229,7 +233,7 @@ function AdminPage() {
                     setProduct({ ...product, price: e.target.value })
                   }
                 />
-                <input
+                {/* <input
                   type="text"
                   className="form-control"
                   placeholder="Category"
@@ -238,6 +242,21 @@ function AdminPage() {
                     setProduct({ ...product, category: e.target.value })
                   }
                 />
+                 */}
+
+                <label for="category">&nbsp;&nbsp;&nbsp;Select category:</label>
+
+                <select name="category" id="category" >
+                  <option value="sports" >Sports</option>
+                  <option value="toys">Toys/Games</option>
+                  <option value="grocery" >Grocery</option>
+                  <option value="fashion">Fashion</option>
+                  <option value="dairy">Dairy</option>
+                  <option value="footwear">Footwear</option>
+                  <option value="electronics">Electronics</option>
+
+                </select>
+
                 <hr />
               </div>
             </Modal.Body>

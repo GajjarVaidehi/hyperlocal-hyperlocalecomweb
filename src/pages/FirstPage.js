@@ -17,6 +17,10 @@ function FirstPage() {
                                 REGISTER AS USER
                             </button>
                         </Link>
+
+                        <br />
+
+                        <Link to="/login">Already registered? Click Here to Login</Link>
                         <hr />
 
                         <h4>Increase your revenue with one-click and attract the local customers better!</h4>
@@ -27,6 +31,9 @@ function FirstPage() {
                                 REGISTER AS SHOPKEEPER
                             </button>
                         </Link>
+
+                        <br />
+                        <Link to="/shopkeeper/login">Already registered? Click Here to Login</Link>
 
                     </div>
                 </div>

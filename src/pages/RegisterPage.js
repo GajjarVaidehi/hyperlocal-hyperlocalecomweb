@@ -18,6 +18,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [cno, setcNumber] = useState("");
+  const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
 
@@ -33,14 +34,19 @@ function RegisterPage() {
         name: name,
         cno: cno,
         email: email,
+        address: address,
       };
       await addDoc(collection(fireDB, "users"), user);
       setLoading(false);
       toast.success("Registration Successful");
+
       setEmail("");
       setName("");
       setcNumber("");
+      setAddress("");
       setPassword("");
+      window.location.href = "/login";
+
     } catch (error) {
       console.log(error);
       toast.error("Registration Failed");
@@ -91,6 +97,16 @@ function RegisterPage() {
               value={cno}
               onChange={(e) => {
                 setcNumber(e.target.value);
+              }}
+            />
+            <textarea
+              type="text"
+              rows={3}
+              className="form-control"
+              placeholder="Address"
+              value={address}
+              onChange={(e) => {
+                setAddress(e.target.value);
               }}
             />
             <input

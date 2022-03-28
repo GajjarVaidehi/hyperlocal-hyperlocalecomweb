@@ -20,6 +20,7 @@ function ShopkeeperRegisterPage() {
   const [name, setName] = useState("");
   const [cno, setcNumber] = useState("");
   const [shopAddress, setShopAddress] = useState("");
+  const [imageURL, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
 
@@ -33,6 +34,7 @@ function ShopkeeperRegisterPage() {
         name,
         cno,
         shopAddress,
+        imageURL,
       });
       const result = await createUserWithEmailAndPassword(
         auth,
@@ -45,9 +47,11 @@ function ShopkeeperRegisterPage() {
       setEmail("");
       setName("");
       setShopName("");
+      setImageURL("");
       setShopAddress("");
       setcNumber("");
       setPassword("");
+      window.location.href = "/login";
     } catch (error) {
       console.log(error);
       toast.error("Registration Failed");
@@ -100,6 +104,17 @@ function ShopkeeperRegisterPage() {
                 setEmail(e.target.value);
               }}
             />
+
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Shop's Image"
+              value={imageURL}
+              onChange={(e) =>
+                setImageURL(e.target.value)
+              }
+            />
+
             <input
               type="text-area"
               className="form-control"

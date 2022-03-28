@@ -34,16 +34,21 @@
   right: 0;
 }
 
-button {
-  background-color: #023247;
+
+button{
+ 
+  background-color: rgb(17, 22, 94);
   box-sizing: none;
-  border: 1 px solid rgb(233, 221, 221);
   color: white;
-  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+ 
+  
 }
 
-button:hover {
-  background-color: rgb(175, 110, 98);
+button:hover{
+  background-color: rgb(147, 198, 240);
 }
 
 .loader {
@@ -64,8 +69,11 @@ a {
 }
 
 input,
-select {
+select,
+textarea{
   height: 35px !important;
+  margin: 10px;
+  
 }
 
 #uncontrolled-tab-example-tab-products {
@@ -89,4 +97,20 @@ select {
   padding: 8px;
   box-sizing: border-box;
   box-shadow: #aaa;
+}
+
+
+.col-md-4{
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  z-index: 0 !important;
+} 
+
+.update-profile{
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }

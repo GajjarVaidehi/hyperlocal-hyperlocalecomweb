@@ -8,8 +8,10 @@ import ProfilePage from "./pages/ProfilePage";
 import ProductInfo from "./pages/ProductInfo";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
+import FirstPage from "./pages/FirstPage";
 import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage";
 import ShopkeeperRegisterPage from "./pages/ShopkeeperRegisterPage";
+import ShopkeeperProfilePage from "./pages/ShopkeeperProfilePage";
 
 import "./stylesheets/layout.css";
 import "./stylesheets/products.css";
@@ -102,7 +104,18 @@ function App() {
             }
           />
 
+          <Route
+            path="/shopkeeper/profile"
+            exact
+            element={
+              <ProtectedShopkeeperRoutes>
+                <ShopkeeperProfilePage />
+              </ProtectedShopkeeperRoutes>
+            }
+          />
+
           <Route path="/login" exact element={<LoginPage />} />
+          <Route path="/first" exact element={<FirstPage />} />
           <Route path="/register" exact element={<RegisterPage />} />
           <Route
             path="/shopkeeper/register"
@@ -126,13 +139,13 @@ export const ProtectedRoutes = ({ children }) => {
   if (localStorage.getItem("currentUser")) {
     return children;
   } else {
-    return <Navigate to="/login" />;
+    return <Navigate to="/first" />;
   }
 };
 export const ProtectedShopkeeperRoutes = ({ children }) => {
   if (localStorage.getItem("currentShopUser")) {
     return children;
   } else {
-    return <Navigate to="/shopkeeper/login" />;
+    return <Navigate to="/first" />;
   }
 };

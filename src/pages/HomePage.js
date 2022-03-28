@@ -81,9 +81,13 @@ function HomePage() {
             }}
           >
             <option value="">All</option>
-            <option value="sport">Sport</option>
-            <option value="toy">Toy</option>
+            <option value="sports" >Sports</option>
+            <option value="toys/games">Toys/Games</option>
+            <option value="grocery" >Grocery</option>
+            <option value="fashion">Fashion</option>
             <option value="dairy">Dairy</option>
+            <option value="footwear">Footwear</option>
+            <option value="electronics">Electronics</option>
           </select>
         </div>
         <div className="row">
