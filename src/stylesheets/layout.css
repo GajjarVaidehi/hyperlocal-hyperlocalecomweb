@@ -114,3 +114,8 @@ textarea{
   align-items: center;
   margin: auto;
 }
+
+.view-button{
+  display: block;
+margin: 10px;
+}

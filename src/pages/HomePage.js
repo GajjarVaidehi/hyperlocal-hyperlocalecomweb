@@ -6,6 +6,7 @@ import { async } from "@firebase/util";
 import { fireproducts } from "../hyperlocal-products";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 function HomePage() {
   const [products, setProducts] = useState([]);
@@ -54,10 +55,13 @@ function HomePage() {
 
   const addToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
+    toast.success("Added to Cart");
+
   };
 
   const addToWishlist = (product) => {
     dispatch({ type: "ADD_TO_WISHLIST", payload: product });
+    toast.success("Added to Wishlist");
   };
 
   return (
@@ -124,14 +128,17 @@ function HomePage() {
                         >
                           ADD TO WISHLIST
                         </button>
-                        <button
-                          onClick={() => {
-                            navigate(`/productinfo/${product.id}`);
-                          }}
-                        >
-                          VIEW
-                        </button>
+
+
                       </div>
+                      <button
+                        className="view-button"
+                        onClick={() => {
+                          navigate(`/productinfo/${product.id}`);
+                        }}
+                      >
+                        VIEW
+                      </button>
                     </div>
                   </div>
                 </div>
