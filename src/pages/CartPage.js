@@ -64,7 +64,8 @@ function CartPage() {
       cartItems.forEach((item) => {
         dispatch({ type: "DELETE_FROM_CART", payload: item });
       });
-      toast.success("Order Placed Successfully");
+
+      window.location.href = '/payment';
       handleClose();
     } catch (error) {
       setLoading(false);

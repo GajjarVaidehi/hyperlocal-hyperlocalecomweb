@@ -9,6 +9,8 @@ import ProductInfo from "./pages/ProductInfo";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
 import FirstPage from "./pages/FirstPage";
+import PaymentPage from "./pages/PaymentPage";
+
 import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage";
 import ShopkeeperRegisterPage from "./pages/ShopkeeperRegisterPage";
 import ShopkeeperProfilePage from "./pages/ShopkeeperProfilePage";
@@ -80,6 +82,16 @@ function App() {
             element={
               <ProtectedRoutes>
                 <WishlistPage />
+              </ProtectedRoutes>
+            }
+          />
+
+          <Route
+            path="/payment"
+            exact
+            element={
+              <ProtectedRoutes>
+                <PaymentPage />
               </ProtectedRoutes>
             }
           />

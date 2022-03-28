@@ -122,6 +122,16 @@ function AdminPage() {
     }
   };
 
+  const acceptOrder = async () => {
+
+  };
+
+  const declineOrder = async () => {
+
+  };
+
+
+
   const deleteProduct = async (item) => {
     try {
       setLoading(true);
@@ -277,6 +287,7 @@ function AdminPage() {
             return (
               <table className="table mt-3 order">
                 <tbody>
+
                   {order.cartItems
                     .filter((cartItem) => {
                       return cartItem.ownerId === data.user.uid;
@@ -289,7 +300,12 @@ function AdminPage() {
                           </td>
                           <td>{item.name}</td>
                           <td>{item.price}</td>
+                          <button className="accept" onClick={acceptOrder}>Accept Order</button>
+                          <button className="decline" onClick={declineOrder}>Decline Order</button>
+
                         </tr>
+
+
                       );
                     })}
                 </tbody>
