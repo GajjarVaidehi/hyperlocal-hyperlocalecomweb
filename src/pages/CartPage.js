@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout";
 import { FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import "react-bootstrap";
+
 import { addDoc, collection } from "firebase/firestore";
 import ProductInfo from "./ProductInfo";
 import fireDB from "../fireConfig";
@@ -111,9 +113,12 @@ function CartPage() {
       </div>
 
       <div className="d-flex justify-content-end mt-3">
-        <button onClick={handleShow}>PLACE ORDER</button>
-      </div>
+        <Link to='/payment'>
+          <button>CONTINUE</button >
+        </Link>
 
+      </div>
+      {/* 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>ADD YOUR ADDRESS DETAILS</Modal.Title>
@@ -169,10 +174,10 @@ function CartPage() {
             Close
           </Button>
           <Button variant="primary" onClick={placeOrder}>
-            ORDER
+            SELECT PAYMENT MODE
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </Layout>
   );
 }

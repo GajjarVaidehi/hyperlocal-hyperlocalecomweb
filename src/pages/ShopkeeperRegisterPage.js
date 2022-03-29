@@ -52,7 +52,7 @@ function ShopkeeperRegisterPage() {
       setShopAddress("");
       setcNumber("");
       setPassword("");
-      window.location.href = "/login";
+      window.location.href = "/shopkeeper/login";
     } catch (error) {
       console.log(error);
       toast.error("Registration Failed");

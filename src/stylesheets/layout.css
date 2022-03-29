@@ -134,3 +134,33 @@ margin: 10px;
   border-radius: 6px;
   margin: 5px;
 }
+.payment-button{
+  background-color: black;
+  width:200px;
+  height:40px;
+  border-radius:5px;
+  font: 15px 'Google Sans', sans-serif;
+    fill: #FFFFFF;
+    font-weight: normal;
+    text-align: center;
+}
+
+.payment-button:hover{
+  background-color: rgba(27, 27, 27, 0.692);
+}
+
+.continue-shopping{
+  margin: auto;
+  background-color:black;
+  border-radius: 5px;
+  width:220px;
+  height:40px;
+  font: 15px 'Google Sans', sans-serif;
+    fill: #FFFFFF;
+    font-weight: normal;
+    text-align: center;
+}
+
+.continue-shopping:hover{
+  background-color: rgba(27, 27, 27, 0.692);
+}

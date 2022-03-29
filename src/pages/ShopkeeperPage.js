@@ -23,6 +23,7 @@ function AdminPage() {
     name: "",
     price: 0,
     imageURL: "",
+    description: "",
     category: "",
     ownerId: data.user.uid,
     ownerShop: ownerShop,
@@ -241,6 +242,16 @@ function AdminPage() {
                   value={product.price}
                   onChange={(e) =>
                     setProduct({ ...product, price: e.target.value })
+                  }
+                />
+
+                <textArea
+                  type="text"
+                  className="form-control"
+                  placeholder="Description"
+                  value={product.description}
+                  onChange={(e) =>
+                    setProduct({ ...product, description: e.target.value })
                   }
                 />
                 {/* <input
