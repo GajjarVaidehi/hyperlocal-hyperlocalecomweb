@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, } from "firebase/auth";
 import Layout from "../components/Layout";
 import { Modal, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -12,6 +13,7 @@ import {
 } from "firebase/firestore";
 import fireDB from "../fireConfig";
 function ProfilePage() {
+  const auth = getAuth();
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
@@ -35,6 +37,17 @@ function ProfilePage() {
     toast.success("Profile Updated");
     setLoading(false);
   };
+
+  const sendPasswordReset = async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("Password reset link sent!");
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  };
+
   const getData = async () => {
     setLoading(true);
     const data = await getDocs(collection(fireDB, "users"));
@@ -101,7 +114,13 @@ function ProfilePage() {
           onChange={(e) => {
             setAddress(e.target.value);
           }}
+
+
         />
+
+        <button className="my-3 " onClick={() => sendPasswordReset(email)}>
+          Reset Password
+        </button>
         <hr />
         <Button variant="primary" onClick={updateInfo}>
           UPDATE

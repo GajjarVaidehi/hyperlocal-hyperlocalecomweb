@@ -57,8 +57,10 @@ function LoginPage() {
             <button className="my-3 " onClick={login}>
               Login
             </button>
-            <hr />
-            <Link to="/register">Click Here to Register</Link>
+            <br />
+            <Link to="/register" >Click Here to Register &nbsp;&nbsp;&nbsp;</Link>
+
+            <Link to="/forgot-password">Forgot Password?</Link>
           </div>
         </div>
         <div className="col-md-5 z1">

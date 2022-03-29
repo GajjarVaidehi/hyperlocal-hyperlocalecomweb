@@ -67,7 +67,9 @@ function ShopkeeperLoginPage() {
               Login
             </button>
             <hr />
-            <Link to="/shopkeeper/register">Click Here to Register</Link>
+            <Link to="/shopkeeper/register">Click Here to Register &nbsp;&nbsp;&nbsp;</Link>
+
+            <Link to="/shopkeeper/forgot-password">Forgot Password?</Link>
           </div>
         </div>
         <div className="col-md-5 z1">

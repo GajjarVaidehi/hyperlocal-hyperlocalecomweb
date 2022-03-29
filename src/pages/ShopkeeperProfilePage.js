@@ -11,7 +11,9 @@ import {
     deleteDoc,
 } from "firebase/firestore";
 import fireDB from "../fireConfig";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 function ShopkeeperProfilePage() {
+    const auth = getAuth();
     const [name, setName] = useState("");
     const [shopName, setShopName] = useState("");
     const [address, setAddress] = useState("");
@@ -39,6 +41,17 @@ function ShopkeeperProfilePage() {
         toast.success("Profile Updated");
         setLoading(false);
     };
+
+    const sendPasswordReset = async (email) => {
+        try {
+            await sendPasswordResetEmail(auth, email);
+            alert("Password reset link sent!");
+        } catch (err) {
+            console.error(err);
+            alert(err.message);
+        }
+    };
+
     const getData = async () => {
         setLoading(true);
         const data = await getDocs(collection(fireDB, "shopkeepers"));
@@ -130,6 +143,10 @@ function ShopkeeperProfilePage() {
 
                 <br />
 
+                <button className="my-3 " onClick={() => sendPasswordReset(email)}>
+                    Reset Password
+                </button>
+                <hr />
                 <button variant="primary" onClick={updateInfo}>
                     UPDATE
                 </button>

@@ -4,12 +4,14 @@ import HomePage from "./pages/HomePage";
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ForgotPassword from "./pages/ForgotPassword"
 import ProfilePage from "./pages/ProfilePage";
 import ProductInfo from "./pages/ProductInfo";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
 import FirstPage from "./pages/FirstPage";
 import PaymentPage from "./pages/PaymentPage";
+
 
 import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage";
 import ShopkeeperRegisterPage from "./pages/ShopkeeperRegisterPage";
@@ -129,6 +131,10 @@ function App() {
           <Route path="/login" exact element={<LoginPage />} />
           <Route path="/first" exact element={<FirstPage />} />
           <Route path="/register" exact element={<RegisterPage />} />
+          <Route path="/forgot-password" exact element={<ForgotPassword />} />
+          <Route path="/shopkeeper/forgot-password" exact element={<ForgotPassword />} />
+          {/* <Route path="/register" exact element={<RegisterPage />} /> */}
+
           <Route
             path="/shopkeeper/register"
             exact
