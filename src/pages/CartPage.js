@@ -118,6 +118,7 @@ function CartPage() {
         </Link>
 
       </div>
+
       {/* 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
