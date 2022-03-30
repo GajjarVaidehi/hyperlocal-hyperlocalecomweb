@@ -123,6 +123,7 @@ function AdminPage() {
     }
   };
 
+
   const acceptOrder = async () => {
 
   };
@@ -234,6 +235,7 @@ function AdminPage() {
                     setProduct({ ...product, imageURL: e.target.value })
                   }
                 />
+
 
                 <input
                   type="number"

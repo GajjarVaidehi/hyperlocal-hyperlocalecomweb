@@ -6,8 +6,8 @@ function FirstPage() {
     return (
         <div className="login-parent">
 
-            <div className="row justify-content-center">
-                <div className="col-md-4 z1">
+            <div className="row justify-content-center ">
+                <div className="col-md-5 first z1 choose">
                     <div className="register-choice">
                         <h4>Getting groceries,accessories,clothes,and every other day-to-day stuff made easy! Register yourself and enjoy shopping with HypLocStore!</h4>
 

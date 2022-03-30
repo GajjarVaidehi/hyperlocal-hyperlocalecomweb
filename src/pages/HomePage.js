@@ -102,7 +102,7 @@ function HomePage() {
               return (
                 <div className="col-md-4">
                   <div className="m-2 p-1 product position-relative">
-                    <div className="product-content">
+                    <div className="contents">
                       <p>{product.name}</p>
                       <p>{product.ownerShop}</p>
                       <div className="text-center">
@@ -145,7 +145,10 @@ function HomePage() {
               );
             })}
         </div>
+
       </div>
+
+
     </Layout>
   );
 }

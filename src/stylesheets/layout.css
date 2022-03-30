@@ -20,7 +20,8 @@
 }
 
 .content {
-  padding-top: 80px;
+  padding-top: 40px;
+ 
 }
 
 .footer {
@@ -100,7 +101,7 @@ textarea{
 }
 
 
-.col-md-4{
+ .first{
   margin-top: 20px;
   background-color: white;
   padding: 20px;
@@ -163,4 +164,34 @@ margin: 10px;
 
 .continue-shopping:hover{
   background-color: rgba(27, 27, 27, 0.692);
+}
+
+.products-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+/* 
+.product{
+  width: 350px;
+  height: auto; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-right: 24px;
+  transition: all 0.3s ease-in-out;
+  padding: 12px;
+  border-radius: 10px; 
+} */
+
+.choose{
+  border-radius: 10px;
+  background-color: #d9eff8;
 }
