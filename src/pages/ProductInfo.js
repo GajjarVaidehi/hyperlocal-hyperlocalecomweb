@@ -42,27 +42,38 @@ function ProductInfo() {
 
   return (
     <Layout loading={loading}>
-      <h1>Product Info</h1>
-      <div className="container d-flex justify-content-center">
-        <div className="justify-content-center">
-          <div className="col-md-12">
+      <h1 className="mt-5">Product Info</h1>
+      <div className="container d-flex justify-content-evenly ">
+        <div className="justify-content-evenly w-100">
+          <div className="d-flex align-items-center justify-content-evenly">
             {product && (
-              <div>
-                <h2>
-                  <b>{product.name}</b>
-                </h2>
+              <>
+                <div>
+                  <img src={product.imageURL} style={{ height: "60vmin" }} />
+                </div>
+                <div>
+                  <h2>
 
-                <img src={product.imageURL} className="product-info-img" />
-                <hr />
-              </div>
+                    <b>{product.name}</b>
+
+
+                  </h2>
+                  <h3>{product.price}</h3>
+                  <h5>{product.description}</h5>
+                  <div className="d-flex flex-column align-items-center justify-content-center my-3">
+                    <button onClick={() => addToCart(product)}>ADD TO CART</button>
+                  </div>
+
+                  <hr />
+                </div>
+              </>
             )}
+
           </div>
           {product && (
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <h5>{product.description}</h5>
-              <div className="d-flex flex-column align-items-center justify-content-center my-3">
-                <button onClick={() => addToCart(product)}>ADD TO CART</button>
-              </div>
+
+
             </div>
           )}
         </div>

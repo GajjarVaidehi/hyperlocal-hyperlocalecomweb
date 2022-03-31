@@ -269,7 +269,11 @@ function AdminPage() {
 
                 <label for="category">&nbsp;&nbsp;&nbsp;Select category:</label>
 
-                <select name="category" id="category" >
+                <select name="category" id="category" value={product.category}
+                  onChange={(e) =>
+                    setProduct({ ...product, category: e.target.value })
+                  }>
+                  <option value="">Category</option>
                   <option value="sports" >Sports</option>
                   <option value="toys">Toys/Games</option>
                   <option value="grocery" >Grocery</option>

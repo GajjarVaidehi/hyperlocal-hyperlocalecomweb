@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 function HomePage() {
+  const [shops, setShops] = useState([]);
   const [products, setProducts] = useState([]);
   const { cartItems } = useSelector((state) => state.cartReducer);
   const { wishlistItems } = useSelector((state) => state.wishlistReducer);
@@ -27,7 +28,20 @@ function HomePage() {
       setLoading(true);
 
       const users = await getDocs(collection(fireDB, "products"));
+      const shops = await getDocs(collection(fireDB, "shopkeepers"));
+      const shopsArray = [];
       const productsArray = [];
+
+      shops.forEach((doc) => {
+        const obj = {
+          id: doc.id,
+          ...doc.data(),
+        };
+
+        shopsArray.push(obj);
+        setLoading(false);
+      });
+
       users.forEach((doc) => {
         const obj = {
           id: doc.id,
@@ -37,6 +51,8 @@ function HomePage() {
         productsArray.push(obj);
         setLoading(false);
       });
+
+      setShops(shopsArray);
       setProducts(productsArray);
     } catch (error) {
       console.log(error);
@@ -65,8 +81,61 @@ function HomePage() {
   };
 
   return (
+
     <Layout loading={loading}>
+      <h2 className="mt-5 text-align-left" >Shops</h2>
       <div className="container">
+
+
+        <div className="row">
+          {shops
+
+
+            .map((shop) => {
+              return (
+                <div className="col-md-4">
+                  <div className="m-2 p-1 product position-relative">
+                    <div className="contents d-flex flex-column align-items-center">
+                      <div className="text-center">
+                        <img
+                          src={shop.imageURL}
+                          alt=""
+                          className="product-img"
+                        />
+                      </div>
+                      <p style={{ fontSize: "3vmin" }}>{shop.shopName}</p>
+                      <p style={{ fontSize: "2vmin" }}>{shop.shopAddress}</p>
+
+                      <div className="d-flex align-items-center">
+                        <button
+                          className="view-button "
+                          onClick={() => {
+                            navigate(`/shopinfo/${shop.id}`);
+                          }}
+                        >
+                          VIEW
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+
+        <button
+          className="view-button "
+          style={{ float: "right" }}
+          onClick={() => {
+            navigate('/allshops');
+          }}
+        >
+          VIEW MORE
+        </button>
+
+        <br />
+
         <div className="d-flex w-50 align-items-center my-3 justify-content-center">
           <input
             type="text"
@@ -94,6 +163,7 @@ function HomePage() {
             <option value="electronics">Electronics</option>
           </select>
         </div>
+
         <div className="row">
           {products
             .filter((obj) => obj.name.toLowerCase().includes(searchKey))
