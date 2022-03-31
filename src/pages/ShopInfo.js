@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 
-function HomePage() {
+function ShopInfo() {
 
     const [products, setProducts] = useState([]);
     const [shop, setShop] = useState();
@@ -36,6 +36,8 @@ function HomePage() {
             const currentShop = await getDoc(
                 doc(fireDB, "shopkeepers", params.shopkeeperid)
             );
+
+
             console.log(currentShop.data());
             setShop(currentShop.data());
         } catch (error) {
@@ -184,4 +186,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default ShopInfo;

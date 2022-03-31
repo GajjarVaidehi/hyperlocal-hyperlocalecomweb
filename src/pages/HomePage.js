@@ -83,7 +83,7 @@ function HomePage() {
   return (
 
     <Layout loading={loading}>
-      <h2 className="mt-5 text-align-left" >Shops</h2>
+      <h2 className="mt-5 md-5 shop-class"><span>&nbsp;&nbsp; Shops Near You &nbsp;&nbsp; </span></h2>
       <div className="container">
 
 
@@ -135,6 +135,8 @@ function HomePage() {
         </button>
 
         <br />
+
+        <h2 className="mt-5 md-5 shop-class"><span>&nbsp;&nbsp; Products &nbsp;&nbsp; </span></h2>
 
         <div className="d-flex w-50 align-items-center my-3 justify-content-center">
           <input

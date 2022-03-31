@@ -7,7 +7,8 @@
 }
 
 .navbar {
-  background-color: #003f5c !important;
+  /* background-color: #003f5c !important; */
+  background-color: #59bad8 !important;
 }
 
 .navbar-brand {
@@ -194,4 +195,15 @@ margin: 10px;
 .choose{
   border-radius: 10px;
   background-color: #d9eff8;
+}
+
+.shop-class{
+  text-align:center;
+  color: #31a0c2;
+  
+}
+
+h2 span{
+  background-color: #d9eff8;
+  border-radius: 10px;
 }

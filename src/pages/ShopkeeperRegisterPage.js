@@ -22,6 +22,7 @@ function ShopkeeperRegisterPage() {
   const [shopAddress, setShopAddress] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
+  const data = JSON.parse(localStorage.getItem("currentShopUser"));
   const auth = getAuth();
 
 
@@ -30,12 +31,14 @@ function ShopkeeperRegisterPage() {
       setLoading(true);
       const user = await addDoc(collection(fireDB, "shopkeepers"), {
         email,
-        password,
+        // password,
         shopName,
         name,
         cno,
         shopAddress,
         imageURL,
+
+
       });
       const result = await createUserWithEmailAndPassword(
         auth,
@@ -51,7 +54,7 @@ function ShopkeeperRegisterPage() {
       setImageURL("");
       setShopAddress("");
       setcNumber("");
-      setPassword("");
+      // setPassword("");
       window.location.href = "/shopkeeper/login";
     } catch (error) {
       console.log(error);

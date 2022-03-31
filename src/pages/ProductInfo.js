@@ -42,7 +42,8 @@ function ProductInfo() {
 
   return (
     <Layout loading={loading}>
-      <h1 className="mt-5">Product Info</h1>
+      {/* <h1 className="mt-5">Product Info</h1> */}
+      <h2 className="mt-5 md-5 shop-class"><span>&nbsp;&nbsp; Product Info &nbsp;&nbsp; </span></h2>
       <div className="container d-flex justify-content-evenly ">
         <div className="justify-content-evenly w-100">
           <div className="d-flex align-items-center justify-content-evenly">
@@ -58,13 +59,23 @@ function ProductInfo() {
 
 
                   </h2>
-                  <h3>{product.price}</h3>
-                  <h5>{product.description}</h5>
+                  <h3>Rs.{product.price}/-</h3>
+
                   <div className="d-flex flex-column align-items-center justify-content-center my-3">
                     <button onClick={() => addToCart(product)}>ADD TO CART</button>
                   </div>
 
+                  <br />
+                  <br />
+
                   <hr />
+
+                  <br />
+
+                  <h3>Product Description</h3>
+                  <h5>{product.description}</h5>
+
+
                 </div>
               </>
             )}
