@@ -77,6 +77,7 @@ function RegisterPage() {
               className="form-control"
               placeholder="Email"
               value={email}
+              required
               onChange={(e) => {
                 setEmail(e.target.value);
               }}

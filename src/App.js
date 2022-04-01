@@ -13,6 +13,7 @@ import FirstPage from "./pages/FirstPage";
 import PaymentPage from "./pages/PaymentPage";
 import ShopInfo from "./pages/ShopInfo";
 import AllShopsPage from "./pages/AllShopsPage";
+import DemoPage from "./pages/DemoPage";
 
 
 import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage";
@@ -110,6 +111,16 @@ function App() {
           />
 
           <Route
+            path="/shopproducts"
+            exact
+            element={
+              <ProtectedRoutes>
+                <DemoPage />
+              </ProtectedRoutes>
+            }
+          />
+
+          <Route
             path="/payment"
             exact
             element={
@@ -133,9 +144,9 @@ function App() {
             path="/shopkeeper"
             exact
             element={
-              <ProtectedShopkeeperRoutes>
-                <ShopkeeperPage />
-              </ProtectedShopkeeperRoutes>
+
+              <ShopkeeperPage />
+
             }
           />
 
@@ -143,9 +154,9 @@ function App() {
             path="/shopkeeper/profile"
             exact
             element={
-              <ProtectedShopkeeperRoutes>
-                <ShopkeeperProfilePage />
-              </ProtectedShopkeeperRoutes>
+
+              <ShopkeeperProfilePage />
+
             }
           />
 

@@ -94,7 +94,7 @@ function HomePage() {
             .map((shop) => {
               return (
                 <div className="col-md-4">
-                  <div className="m-2 p-1 product position-relative">
+                  <div className="m-3 md-4 p-1 product position-relative">
                     <div className="contents d-flex flex-column align-items-center">
                       <div className="text-center">
                         <img
@@ -110,7 +110,7 @@ function HomePage() {
                         <button
                           className="view-button "
                           onClick={() => {
-                            navigate(`/shopinfo/${shop.id}`);
+                            navigate('/shopproducts');
                           }}
                         >
                           VIEW
@@ -173,7 +173,7 @@ function HomePage() {
             .map((product) => {
               return (
                 <div className="col-md-4">
-                  <div className="m-2 p-1 product position-relative">
+                  <div className="m-4 p-1 product position-relative">
                     <div className="contents">
                       <p>{product.name}</p>
                       <p>{product.ownerShop}</p>

@@ -76,7 +76,7 @@ function ShopkeeperProfilePage() {
     return (
         <Layout>
             <div className="update-profile">
-                <h5>Shop Name:</h5>
+                <h5 className="mt-5">Shop Name:</h5>
                 <input
                     type="text"
                     className="form-control"

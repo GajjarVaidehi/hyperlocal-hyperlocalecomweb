@@ -71,7 +71,7 @@ function PaymentPage() {
     return (
         <Layout loading={loading} >
 
-            <h1 >Choose Payment Mode</h1>
+            <h1 className="mt-5">Choose Payment Mode</h1>
             <br />
             <div className="d-flex justify-content-center">
 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { BiMinus, BiPlus } from 'react-icons/bi'
 import { Modal, Button } from "react-bootstrap";
 import "react-bootstrap";
 
@@ -13,6 +14,7 @@ import { toast } from "react-toastify";
 
 function CartPage() {
   const { cartItems } = useSelector((state) => state.cartReducer);
+  const [qty, setQty] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -26,6 +28,28 @@ function CartPage() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // const updateQty = (action, id) => {
+  //   if (action == "add") {
+
+  //     setQty(qty + 1);
+  //     cartItems.map((item) => {
+  //       if (item.id === id)
+  //         item.qty += 1;
+  //     });
+
+  //     console.log(cartItems);
+
+  //   }
+
+  //   if (action == "remove") {
+  //     setQty(qty - 1);
+  //     cartItems.map((item) => {
+  //       item.qty -= 1;
+  //     });
+
+  //   }
+  // };
 
   useEffect(() => {
     let temp = 0;
@@ -96,9 +120,23 @@ function CartPage() {
                   <img src={item.imageURL} height="80" width="80" />
                 </td>
                 <td>{item.name}</td>
-                <td>{item.price}</td>
+                {/* <td>{item.price}</td> */}
+                <td>Rs.{parseFloat(item.price)}/-</td>
 
                 <td>{item.ownerShop}</td>
+                {/* <td>
+                  <div className="group flex items-center gap-2 ml-auto cursor-pointer">
+                    <div whiletap={{ scale: 0.75 }} onClick={() => updateQty("remove", item.id)}>
+                      <BiMinus className="text-gray-50" />
+                    </div>
+                    <p className="w-5 h-5 rounded-sm text-gray-50 flex items-center justify-center">
+                      {qty}
+                    </p>
+                    <div whiletap={{ scale: 0.75 }} onClick={() => updateQty("add", item.id)}>
+                      <BiPlus className="text-gray-50" />
+                    </div>
+                  </div>
+                </td> */}
                 <td>
                   <FaTrash onClick={() => deleteFromCart(item)} />
                 </td>

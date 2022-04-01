@@ -126,6 +126,7 @@ function AdminPage() {
 
   const acceptOrder = async () => {
 
+
   };
 
   const declineOrder = async () => {
@@ -160,7 +161,7 @@ function AdminPage() {
       <Tabs
         defaultActiveKey="products"
         id="uncontrolled-tab-example"
-        className="mb-3"
+        className="mb-3 mt-3"
       >
         <Tab eventKey="products" title="Products">
           <div className="d-flex justify-content-between">

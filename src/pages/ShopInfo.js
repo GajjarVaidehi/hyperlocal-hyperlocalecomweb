@@ -140,7 +140,8 @@ function ShopInfo() {
                                             <p>{product.ownerShop}</p>
                                             <div className="text-center">
                                                 <img
-                                                    src={product.imageURL}
+                                                    // src={product.imageURL}
+
                                                     alt=""
                                                     className="product-img"
                                                 />
@@ -148,6 +149,7 @@ function ShopInfo() {
                                         </div>
                                         <div className="product-actions">
                                             <h2>Rs.{product.price} /-</h2>
+
                                             <div className="d-flex">
                                                 <button
                                                     className="mx-2"
