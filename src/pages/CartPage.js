@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { BiMinus, BiPlus } from 'react-icons/bi'
+import { BiMinus, BiPlus } from "react-icons/bi";
 import { Modal, Button } from "react-bootstrap";
 import "react-bootstrap";
 
@@ -91,7 +91,7 @@ function CartPage() {
         dispatch({ type: "DELETE_FROM_CART", payload: item });
       });
 
-      window.location.href = '/payment';
+      window.location.href = "/payment";
       handleClose();
     } catch (error) {
       setLoading(false);
@@ -151,10 +151,9 @@ function CartPage() {
       </div>
 
       <div className="d-flex justify-content-end mt-3">
-        <Link to='/payment'>
-          <button>CONTINUE</button >
+        <Link to="/payment">
+          <button>CONTINUE</button>
         </Link>
-
       </div>
 
       {/* 

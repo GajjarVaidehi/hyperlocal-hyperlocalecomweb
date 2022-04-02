@@ -72,7 +72,6 @@ function HomePage() {
   const addToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
     toast.success("Added to Cart");
-
   };
 
   const addToWishlist = (product) => {
@@ -81,54 +80,45 @@ function HomePage() {
   };
 
   return (
-
     <Layout loading={loading}>
-      <h2 className="mt-5 md-5 shop-class"><span>&nbsp;&nbsp; Shops Near You &nbsp;&nbsp; </span></h2>
+      <h2 className="mt-5 md-5 shop-class">
+        <span>&nbsp;&nbsp; Shops Near You &nbsp;&nbsp; </span>
+      </h2>
       <div className="container">
-
-
         <div className="row">
-          {shops
-
-
-            .map((shop) => {
-              return (
-                <div className="col-md-4">
-                  <div className="m-3 md-4 p-1 product position-relative">
-                    <div className="contents d-flex flex-column align-items-center">
-                      <div className="text-center">
-                        <img
-                          src={shop.imageURL}
-                          alt=""
-                          className="product-img"
-                        />
-                      </div>
-                      <p style={{ fontSize: "3vmin" }}>{shop.shopName}</p>
-                      <p style={{ fontSize: "2vmin" }}>{shop.shopAddress}</p>
-
-                      <div className="d-flex align-items-center">
-                        <button
-                          className="view-button "
-                          onClick={() => {
-                            navigate('/shopproducts');
-                          }}
-                        >
-                          VIEW
-                        </button>
-                      </div>
+          {shops.map((shop) => {
+            return (
+              <div className="col-md-4">
+                <div className="m-3 md-4 p-1 product position-relative">
+                  <div className="contents d-flex flex-column align-items-center">
+                    <div className="text-center">
+                      <img src={shop.imageURL} alt="" className="product-img" />
                     </div>
+                    <p style={{ fontSize: "3vmin" }}>{shop.shopName}</p>
+                    <p style={{ fontSize: "2vmin" }}>{shop.shopAddress}</p>
 
+                    <div className="d-flex align-items-center">
+                      <button
+                        className="view-button "
+                        onClick={() => {
+                          navigate("/shopproducts");
+                        }}
+                      >
+                        VIEW
+                      </button>
+                    </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
         </div>
 
         <button
           className="view-button "
           style={{ float: "right" }}
           onClick={() => {
-            navigate('/allshops');
+            navigate("/allshops");
           }}
         >
           VIEW MORE
@@ -136,7 +126,9 @@ function HomePage() {
 
         <br />
 
-        <h2 className="mt-5 md-5 shop-class"><span>&nbsp;&nbsp; Products &nbsp;&nbsp; </span></h2>
+        <h2 className="mt-5 md-5 shop-class">
+          <span>&nbsp;&nbsp; Products &nbsp;&nbsp; </span>
+        </h2>
 
         <div className="d-flex w-50 align-items-center my-3 justify-content-center">
           <input
@@ -156,9 +148,9 @@ function HomePage() {
             }}
           >
             <option value="">All</option>
-            <option value="sports" >Sports</option>
+            <option value="sports">Sports</option>
             <option value="toys/games">Toys/Games</option>
-            <option value="grocery" >Grocery</option>
+            <option value="grocery">Grocery</option>
             <option value="fashion">Fashion</option>
             <option value="dairy">Dairy</option>
             <option value="footwear">Footwear</option>
@@ -175,8 +167,10 @@ function HomePage() {
                 <div className="col-md-4">
                   <div className="m-4 p-1 product position-relative">
                     <div className="contents">
-                      <p>{product.name}</p>
-                      <p>{product.ownerShop}</p>
+                      <h5>
+                        <b>{product.name}</b>
+                      </h5>
+                      <h5>{product.ownerShop}</h5>
                       <div className="text-center">
                         <img
                           src={product.imageURL}
@@ -200,8 +194,6 @@ function HomePage() {
                         >
                           ADD TO WISHLIST
                         </button>
-
-
                       </div>
                       <button
                         className="view-button"
@@ -217,10 +209,7 @@ function HomePage() {
               );
             })}
         </div>
-
       </div>
-
-
     </Layout>
   );
 }
