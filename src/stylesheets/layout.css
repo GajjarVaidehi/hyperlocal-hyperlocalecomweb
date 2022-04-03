@@ -207,3 +207,10 @@ h2 span{
   background-color: #d9eff8;
   border-radius: 10px;
 }
+
+.bgimg{
+  background: url("C:/Users/Rajvi/Desktop/bgimage.jpg");
+  opacity: 2.8;
+  background-size: cover;
+  height: auto;
+}
