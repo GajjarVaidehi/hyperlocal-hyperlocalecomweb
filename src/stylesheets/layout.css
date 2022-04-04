@@ -209,8 +209,8 @@ h2 span{
 }
 
 .bgimg{
-  background: url("C:/Users/Rajvi/Desktop/bgimage.jpg");
+  background: url("C:/Users/Rajvi/Desktop/bgimg.jpg");
   opacity: 2.8;
-  background-size: cover;
+  background-size:auto;
   height: auto;
 }
