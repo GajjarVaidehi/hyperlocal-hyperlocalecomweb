@@ -7,9 +7,9 @@ function FirstPage() {
         <div className="login-parent">
 
             <div className="row justify-content-center ">
-                <div className="col-md-5 first z1 choose">
+                <div className="col-md-4 first z1 choose">
                     <div className="register-choice">
-                        <h4>Getting groceries,accessories,clothes,and every other day-to-day stuff made easy! Register yourself and enjoy shopping with HypLocStore!</h4>
+                        <h4>Getting groceries, accessories, clothes, and every other day-to-day stuff made easy! Register yourself and enjoy shopping with HypLocStore!</h4>
 
 
                         <Link to="/register">

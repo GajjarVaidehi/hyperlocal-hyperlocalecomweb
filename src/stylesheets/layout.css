@@ -22,7 +22,7 @@
 
 .content {
   padding-top: 40px;
- 
+
 }
 
 .footer {
@@ -37,19 +37,19 @@
 }
 
 
-button{
- 
+button {
+
   background-color: rgb(17, 22, 94);
   box-sizing: none;
   color: white;
   border: none;
   border-radius: 3px;
   padding: 10px;
- 
-  
+
+
 }
 
-button:hover{
+button:hover {
   background-color: rgb(147, 198, 240);
 }
 
@@ -72,10 +72,10 @@ a {
 
 input,
 select,
-textarea{
+textarea {
   height: 35px !important;
   margin: 10px;
-  
+
 }
 
 #uncontrolled-tab-example-tab-products {
@@ -102,27 +102,27 @@ textarea{
 }
 
 
- .first{
+.first {
   margin-top: 20px;
   background-color: white;
   padding: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   z-index: 0 !important;
-} 
+}
 
-.update-profile{
+.update-profile {
   width: 40%;
   justify-content: center;
   align-items: center;
   margin: auto;
 }
 
-.view-button{
+.view-button {
   display: block;
-margin: 10px;
+  margin: 10px;
 }
 
-.accept{
+.accept {
   background-color: rgb(27, 134, 63) !important;
   color: white;
   border-radius: 6px;
@@ -130,44 +130,45 @@ margin: 10px;
 }
 
 
-.decline{
+.decline {
   background-color: rgb(236, 30, 30) !important;
   color: white;
   border-radius: 6px;
   margin: 5px;
 }
-.payment-button{
+
+.payment-button {
   background-color: black;
-  width:200px;
-  height:40px;
-  border-radius:5px;
-  font: 15px 'Google Sans', sans-serif;
-    fill: #FFFFFF;
-    font-weight: normal;
-    text-align: center;
-}
-
-.payment-button:hover{
-  background-color: rgba(27, 27, 27, 0.692);
-}
-
-.continue-shopping{
-  margin: auto;
-  background-color:black;
+  width: 200px;
+  height: 40px;
   border-radius: 5px;
-  width:220px;
-  height:40px;
   font: 15px 'Google Sans', sans-serif;
-    fill: #FFFFFF;
-    font-weight: normal;
-    text-align: center;
+  fill: #FFFFFF;
+  font-weight: normal;
+  text-align: center;
 }
 
-.continue-shopping:hover{
+.payment-button:hover {
   background-color: rgba(27, 27, 27, 0.692);
 }
 
-.products-box{
+.continue-shopping {
+  margin: auto;
+  background-color: black;
+  border-radius: 5px;
+  width: 220px;
+  height: 40px;
+  font: 15px 'Google Sans', sans-serif;
+  fill: #FFFFFF;
+  font-weight: normal;
+  text-align: center;
+}
+
+.continue-shopping:hover {
+  background-color: rgba(27, 27, 27, 0.692);
+}
+
+.products-box {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -192,25 +193,79 @@ margin: 10px;
   border-radius: 10px; 
 } */
 
-.choose{
+.choose {
   border-radius: 10px;
   background-color: #d9eff8;
 }
 
-.shop-class{
-  text-align:center;
+.shop-class {
+  text-align: center;
   color: #31a0c2;
-  
+
 }
 
-h2 span{
+h2 span {
   background-color: #d9eff8;
   border-radius: 10px;
 }
 
+/* 
 .bgimg{
   background: url("C:/Users/Rajvi/Desktop/bgimage.jpg");
   opacity: 2.8;
   background-size: cover;
   height: auto;
+} */
+
+
+@media (max-width: 768px) {
+  .product:hover {
+
+    box-shadow: 5px 5px 20px 0px rgba(167, 196, 228, 0.1);
+    transition: all 0.3s;
+    border-radius: 5px;
+    width: 250px;
+    height: 300px;
+
+    opacity: 1;
+  }
+
+
+  .product-actions {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: bold !important;
+  }
+
+}
+
+
+
+@media (max-width: 992px) {
+  .search-items {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+.shopkeeper-tab {
+  background-color: #e9f8fe
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
 }

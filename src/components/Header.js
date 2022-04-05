@@ -30,6 +30,8 @@ function Header() {
           <Link className="navbar-brand" to="/">
             HyperLocal Store
           </Link>
+
+
           <button
             className="navbar-toggler"
             type="button"
@@ -81,7 +83,7 @@ function Header() {
                 </li>
               )}
               <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={logout}>
+                <Link className="nav-link" to="/first" onClick={logout}>
                   Logout
                 </Link>
               </li>

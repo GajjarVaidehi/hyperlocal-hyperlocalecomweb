@@ -14,6 +14,7 @@ import { Modal, Button, Tabs, Tab } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 function AdminPage() {
+  var hidden = false;
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const data = JSON.parse(localStorage.getItem("currentShopUser"));
@@ -125,11 +126,24 @@ function AdminPage() {
 
 
   const acceptOrder = async () => {
-
+    hidden = true;
+    if (hidden) {
+      document.getElementById('accept').style.visibility = 'hidden';
+      // document.getElementById('decline').style.visibility = 'hidden';
+      document.getElementById('acceptText').className = "show";
+    }
+    toast.success("Order accepted!");
 
   };
 
   const declineOrder = async () => {
+    hidden = true;
+    if (hidden) {
+      document.getElementById('accept').style.visibility = 'hidden';
+      document.getElementById('decline').style.visibility = 'hidden';
+      document.getElementById('declineText').className = "show";
+    }
+    toast.error("Order Declined!");
 
   };
 
@@ -161,14 +175,14 @@ function AdminPage() {
       <Tabs
         defaultActiveKey="products"
         id="uncontrolled-tab-example"
-        className="mb-3 mt-3"
+        className="mb-3 mt-3 shopkeeper-tab"
       >
-        <Tab eventKey="products" title="Products">
-          <div className="d-flex justify-content-between">
+        <Tab eventKey="products" title="Products" >
+          <div className="d-flex justify-content-between ">
             <h3>Products List</h3>
             <button onClick={addHandler}>Add Product</button>
           </div>
-          <table className="table mt-3">
+          <table className="table table-striped table-hover mt-3">
             <thead>
               <tr>
                 <th>Image</th>
@@ -303,7 +317,7 @@ function AdminPage() {
         <Tab eventKey="orders" title="Orders">
           {orders.map((order) => {
             return (
-              <table className="table mt-3 order">
+              <table className="table mt-3 ">
                 <tbody>
 
                   {order.cartItems
@@ -318,9 +332,10 @@ function AdminPage() {
                           </td>
                           <td>{item.name}</td>
                           <td>{item.price}</td>
-                          <button className="accept" onClick={acceptOrder}>Accept Order</button>
-                          <button className="decline" onClick={declineOrder}>Decline Order</button>
-
+                          <button className="accept" id="accept" onClick={acceptOrder}>Accept Order</button>
+                          <input className="hide form-control" type="text" id="acceptText" value="Order Accepted" />
+                          {/* <button className="decline" id="decline" onClick={declineOrder}>Decline Order</button>
+                          <input className="hide form-control" type="text" id="declineText" value="Order Declined" /> */}
                         </tr>
 
 

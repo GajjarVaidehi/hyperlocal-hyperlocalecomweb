@@ -101,30 +101,31 @@ function CartPage() {
 
   return (
     <Layout loading={loading}>
-      <table className="table mt-3">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
+      <div className="table-responsive">
+        <table className="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
 
-            <th>Shop</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cartItems.map((item) => {
-            return (
-              <tr>
-                <td>
-                  <img src={item.imageURL} height="80" width="80" />
-                </td>
-                <td>{item.name}</td>
-                {/* <td>{item.price}</td> */}
-                <td>Rs.{parseFloat(item.price)}/-</td>
+              <th>Shop</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cartItems.map((item) => {
+              return (
+                <tr>
+                  <td>
+                    <img src={item.imageURL} height="80" width="80" />
+                  </td>
+                  <td>{item.name}</td>
+                  {/* <td>{item.price}</td> */}
+                  <td>Rs.{parseFloat(item.price)}/-</td>
 
-                <td>{item.ownerShop}</td>
-                {/* <td>
+                  <td>{item.ownerShop}</td>
+                  {/* <td>
                   <div className="group flex items-center gap-2 ml-auto cursor-pointer">
                     <div whiletap={{ scale: 0.75 }} onClick={() => updateQty("remove", item.id)}>
                       <BiMinus className="text-gray-50" />
@@ -137,26 +138,26 @@ function CartPage() {
                     </div>
                   </div>
                 </td> */}
-                <td>
-                  <FaTrash onClick={() => deleteFromCart(item)} />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  <td>
+                    <FaTrash onClick={() => deleteFromCart(item)} />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
 
-      <div className="d-flex justify-content-end">
-        <h4 className="total-amount">Total Amount = Rs.{totalAmount} /-</h4>
-      </div>
+        <div className="d-flex justify-content-end">
+          <h4 className="total-amount">Total Amount = Rs.{totalAmount} /-</h4>
+        </div>
 
-      <div className="d-flex justify-content-end mt-3">
-        <Link to="/payment">
-          <button>CONTINUE</button>
-        </Link>
-      </div>
+        <div className="d-flex justify-content-end mt-3">
+          <Link to="/payment">
+            <button>CONTINUE</button>
+          </Link>
+        </div>
 
-      {/* 
+        {/* 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>ADD YOUR ADDRESS DETAILS</Modal.Title>
@@ -216,6 +217,8 @@ function CartPage() {
           </Button>
         </Modal.Footer>
       </Modal> */}
+
+      </div>
     </Layout>
   );
 }

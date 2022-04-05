@@ -1,73 +1,95 @@
-.form-control{
+.form-control {
     box-shadow: none;
 }
 
-.form-control:focus{
+.form-control:focus {
     margin-top: 15px !important;
     box-shadow: none !important;
 }
 
-input,textarea{
+input,
+textarea {
     margin-top: 15px !important;
 }
 
-.register-form{
+.register-form {
     background-color: white;
     padding: 20px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     z-index: 0 !important;
 }
 
-.register-parent{
+.register-parent {
     height: 100vh;
     background-color: aliceblue;
 }
 
-.register-parent .row{
+.register-parent .row {
     height: 100vh;
     align-items: center;
     z-index: 999 !important;
 }
 
-.register-top{
-    height:50%;
+.register-top {
+    height: 50%;
     position: absolute;
-    left:0;
-     right: 0;
-     top: 0;
-     background-color: #003F5C;
-     z-index: 0 !important;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #003F5C;
+    z-index: 0 !important;
 }
 
-.z1{
+.z1 {
     z-index: 1 !important;
 }
 
 
-.login-form{
+.login-form {
     background-color: white;
     padding: 20px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     z-index: 0 !important;
 }
 
-.login-parent{
+.login-parent {
     height: 100vh;
     background-color: aliceblue;
 }
 
-.login-parent .row{
+.login-parent .row {
     height: 100vh;
     align-items: center;
     z-index: 999 !important;
 }
 
-.login-bottom{
-    height:50%;
+.login-bottom {
+    height: 50%;
     position: absolute;
-    left:0;
-     right: 0;
-     bottom: 0;
-     background-color: #003F5C;
-     z-index: 0 !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #003F5C;
+    z-index: 0 !important;
+}
+
+@media (max-width: 769px) {
+    .login-form {
+        margin-top: 20px;
+        text-align: center;
+        width: 50vw;
+
+        margin-left: 25vw;
+    }
+
+    .register-form {
+        margin-top: 20px;
+        text-align: center;
+        width: 50vw;
+
+        margin-left: 25vw;
+
+
+    }
+
 }

@@ -90,14 +90,14 @@ function HomePage() {
           <div className="row">
             {shops.map((shop) => {
               return (
-                <div className="col-md-4">
-                  <div className="m-3 md-4 p-1 product position-relative">
+                <div className="col-md-6 col-xs-6 col-sm-6 col-lg-4">
+                  <div className="m-4 p-1 product position-relative">
                     <div className="contents d-flex flex-column align-items-center">
                       <div className="text-center">
                         <img
                           src={shop.imageURL}
                           alt=""
-                          className="product-img"
+                          className="shop-img"
                         />
                       </div>
                       <p style={{ fontSize: "3vmin" }}>{shop.shopName}</p>
@@ -120,7 +120,7 @@ function HomePage() {
             })}
           </div>
 
-          <button
+          {/* <button
             className="view-button "
             style={{ float: "right" }}
             onClick={() => {
@@ -128,7 +128,7 @@ function HomePage() {
             }}
           >
             VIEW MORE
-          </button>
+          </button> */}
 
           <br />
 
@@ -136,7 +136,7 @@ function HomePage() {
             <span>&nbsp;&nbsp; Products &nbsp;&nbsp; </span>
           </h2>
 
-          <div className="d-flex w-50 align-items-center my-3 justify-content-center">
+          <div className="d-flex w-50 align-items-center my-3 justify-content-center search-items">
             <input
               type="text"
               value={searchKey}
@@ -170,7 +170,7 @@ function HomePage() {
               .filter((obj) => obj.category.toLowerCase().includes(filterType))
               .map((product) => {
                 return (
-                  <div className="col-md-4">
+                  <div className="col-md-6 col-xs-6 col-sm-6 col-lg-4">
                     <div className="m-4 p-1 product position-relative">
                       <div className="contents">
                         <h5>

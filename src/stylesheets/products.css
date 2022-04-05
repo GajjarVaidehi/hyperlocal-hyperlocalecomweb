@@ -1,7 +1,9 @@
 .product {
     transition: all 0.3s ease-in-out;
     box-shadow: rgba(8, 42, 82, 0.3) 0px 2px 2px 0.5px;
-    width: 350px;
+    /* width: 350px;
+    height: 400px; */
+    width: 95%;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -9,6 +11,10 @@
     align-items: center;
     margin-bottom: 50px;
     margin-right: 24px;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
 
     padding: 12px;
     /* border-radius: 10px;  */
@@ -24,6 +30,13 @@
 .product-img {
     height: 180px;
     width: auto;
+    object-fit: contain;
+}
+
+
+.shop-img {
+    height: 180px;
+    width: 220px;
     object-fit: contain;
 }
 
@@ -71,6 +84,11 @@
     color: white;
 }
 
+/* 
 .order {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+} */
+
+.table-hover {
+    background-color: #edf9fe;
 }
