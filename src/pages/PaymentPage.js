@@ -59,8 +59,15 @@ function PaymentPage() {
             cartItems.forEach((item) => {
                 dispatch({ type: "DELETE_FROM_CART", payload: item });
             });
+            document.getElementById('continue-shopping-id').style.visibility = 'visible';
+            document.getElementById('thanks').className = "show";
+
             toast.success('Order Placed Successfully');
+
+
+
             handleClose();
+
         } catch (error) {
             setLoading(false);
             toast.error("Order failed");
@@ -131,7 +138,7 @@ function PaymentPage() {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={placeOrder}>
+                        <Button variant="primary place-order" onClick={placeOrder}>
                             PLACE ORDER
                         </Button>
                     </Modal.Footer>
@@ -203,10 +210,10 @@ function PaymentPage() {
                 <br />
                 <br />
                 <br />
-                <h3 >Thanks for shopping!</h3>
+                <h3 id="thanks" className="hide">Thanks for shopping!</h3>
                 <br />
                 <button
-                    className="continue-shopping "
+                    className="continue-shopping hide" id="continue-shopping-id"
                     onClick={() => {
                         navigate('/');
                     }}
