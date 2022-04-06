@@ -12,6 +12,7 @@ function Header() {
       ? JSON.parse(localStorage.getItem("currentUser"))
       : "";
   const shopkeeper = JSON.parse(localStorage.getItem("currentShopUser"));
+  const admin = JSON.parse(localStorage.getItem("currentAdmin"));
   console.log(shopkeeper);
 
   const logout = () => {
@@ -54,7 +55,7 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
-              {!shopkeeper && (
+              {!shopkeeper && !admin && (
                 <li className="nav-item">
                   <Link
                     className="nav-link active"
@@ -67,7 +68,10 @@ function Header() {
                 </li>
               )}
 
-              {!user && (
+
+
+
+              {!user && !admin && (
                 <li className="nav-item">
                   <Link
                     className="nav-link active"
@@ -81,7 +85,7 @@ function Header() {
                 </li>
               )}
 
-              {!shopkeeper && (
+              {!shopkeeper && !admin && (
                 <li className="nav-item">
                   <Link className="nav-link" to="/orders">
                     Orders
@@ -93,14 +97,14 @@ function Header() {
                   Logout
                 </Link>
               </li>
-              {!shopkeeper && (
+              {!shopkeeper && !admin && (
                 <li className="nav-item">
                   <Link className="nav-link" to="/cart">
                     <FaCartPlus /> {cartItems.length}
                   </Link>
                 </li>
               )}
-              {!shopkeeper && (
+              {!shopkeeper && !admin && (
                 <li className="nav-item">
                   <Link className="nav-link" to="/wishlist">
                     <FaHeart /> {wishlistItems.length}

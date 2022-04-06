@@ -56,7 +56,7 @@ function DemoPage() {
                     <div className="col-md-4">
                         <div className="m-2 p-1 product position-relative">
                             <div className="contents">
-                                <p>Amul Pure Ghee</p>
+                                <h5>Amul Pure Ghee</h5>
                                 <h2>Rs. 485 /-</h2>
                                 <div className="text-center">
                                     <img
@@ -98,51 +98,8 @@ function DemoPage() {
                         </div>
 
 
-
                     </div>
 
-                    <div className="m-2 p-1 product position-relative">
-                        <div className="contents">
-                            <p>Chocos</p>
-                            <h2>Rs. 194 /-</h2>
-                            <div className="text-center">
-                                <img
-                                    // src={product.imageURL}
-                                    src="https://m.media-amazon.com/images/I/61UyaPWyXIL._SL1080_.jpg"
-                                    alt=""
-                                    className="product-img"
-                                />
-                            </div>
-                        </div>
-                        <div className="product-actions">
-
-
-                            {/* <div className="d-flex">
-                                    <button
-                                        className="mx-2"
-                                        onClick={() => addToCart(product)}
-                                    >
-                                        ADD TO CART
-                                    </button>
-                                    <button
-                                        className="mx-2"
-                                        onClick={() => addToWishlist(product)}
-                                    >
-                                        ADD TO WISHLIST
-                                    </button>
-
-
-                                </div> */}
-                            <button
-                                className="view-button"
-                                onClick={() => {
-                                    navigate('/productinfo/{id1}')
-                                }}
-                            >
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
 
 
 

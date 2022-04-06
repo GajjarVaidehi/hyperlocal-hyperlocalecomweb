@@ -13,6 +13,7 @@ import PaymentPage from "./pages/PaymentPage";
 import ShopInfo from "./pages/ShopInfo";
 import AllShopsPage from "./pages/AllShopsPage";
 import DemoPage from "./pages/DemoPage";
+import AdminLoginPage from "./pages/AdminLoginPage";
 
 import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage";
 import ShopkeeperRegisterPage from "./pages/ShopkeeperRegisterPage";
@@ -132,9 +133,19 @@ function App() {
             path="/admin"
             exact
             element={
-              <ProtectedRoutes>
+              <ProtectedAdminRoutes>
                 <AdminPage />
-              </ProtectedRoutes>
+              </ProtectedAdminRoutes>
+            }
+          />
+
+          <Route
+            path="/adminlogin"
+            exact
+            element={
+
+              <AdminLoginPage />
+
             }
           />
 
@@ -184,6 +195,14 @@ export const ProtectedRoutes = ({ children }) => {
 };
 export const ProtectedShopkeeperRoutes = ({ children }) => {
   if (localStorage.getItem("currentShopUser")) {
+    return children;
+  } else {
+    return <Navigate to="/first" />;
+  }
+};
+
+export const ProtectedAdminRoutes = ({ children }) => {
+  if (localStorage.getItem("currentAdmin")) {
     return children;
   } else {
     return <Navigate to="/first" />;
