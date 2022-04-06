@@ -8,7 +8,7 @@ import Loader from "../components/Loader";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cpassword, setcPassword] = useState("");
+
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
 

@@ -39,13 +39,7 @@ function OrdersPage() {
           .map((order) => {
             return (
               <table className="table mt-3 order">
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
+
                 <tbody>
                   {order.cartItems.map((item) => {
                     return (
