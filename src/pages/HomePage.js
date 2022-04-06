@@ -15,6 +15,7 @@ function HomePage() {
   const { wishlistItems } = useSelector((state) => state.wishlistReducer);
   const [loading, setLoading] = useState(false);
   const [searchKey, setSearchKey] = useState("");
+  const [searchKey1, setSearchKey1] = useState("");
   const [filterType, setFilterType] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -82,7 +83,6 @@ function HomePage() {
   return (
     <Layout loading={loading}>
       {" "}
-
       <br />
       <br />
       <br />
@@ -92,41 +92,32 @@ function HomePage() {
         className="d-inline-block align-top bgimg"
         alt="React Bootstrap logo"
       />
-
       <h2 className="mt-5 md-5 shop-class">
         <span>&nbsp;&nbsp; Shops Near You &nbsp;&nbsp; </span>
       </h2>
-
       <br />
-
       <div className=" align-items-center my-3 justify-content-center search-shops ">
         <input
           type="text"
-          value={searchKey}
+          value={searchKey1}
           onChange={(e) => {
-            setSearchKey(e.target.value);
+            setSearchKey1(e.target.value);
           }}
           className="form-control mx-2"
           placeholder="'Search Shops"
         />
-
       </div>
-
       <div className="container">
         <div className="row">
           {shops
-            .filter((obj) => obj.shopName.toLowerCase().includes(searchKey))
+            .filter((obj) => obj.shopName.toLowerCase().includes(searchKey1))
             .map((shop) => {
               return (
                 <div className="col-md-6 col-xs-6 col-sm-6 col-lg-4">
                   <div className="m-4 p-1 product position-relative">
                     <div className="contents d-flex flex-column align-items-center">
                       <div className="text-center">
-                        <img
-                          src={shop.imageURL}
-                          alt=""
-                          className="shop-img"
-                        />
+                        <img src={shop.imageURL} alt="" className="shop-img" />
                       </div>
                       <p style={{ fontSize: "3vmin" }}>{shop.shopName}</p>
                       <p style={{ fontSize: "2vmin" }}>{shop.shopAddress}</p>
@@ -244,7 +235,6 @@ function HomePage() {
             })}
         </div>
       </div>
-
     </Layout>
   );
 }

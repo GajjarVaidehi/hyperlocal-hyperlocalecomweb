@@ -46,7 +46,6 @@ function RegisterPage() {
       setAddress("");
       setPassword("");
       window.location.href = "/login";
-
     } catch (error) {
       console.log(error);
       toast.error("Registration Failed");

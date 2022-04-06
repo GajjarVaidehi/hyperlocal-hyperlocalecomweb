@@ -4,16 +4,7 @@ import { FaBars, FaUser } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { FaCartPlus, FaHeart } from "react-icons/fa";
 
-
 function Header() {
-
-  var icon = (
-    <span class="logo">
-      <a href="/">
-        <img src="./public/Logo.png" height="33" width="120" alt="text here" /></a>
-    </span>
-  );
-
   const { cartItems } = useSelector((state) => state.cartReducer);
   const { wishlistItems } = useSelector((state) => state.wishlistReducer);
   const { user } =
@@ -22,7 +13,6 @@ function Header() {
       : "";
   const shopkeeper = JSON.parse(localStorage.getItem("currentShopUser"));
   console.log(shopkeeper);
-
 
   const logout = () => {
     if (localStorage.getItem("currentUser")) {
@@ -39,18 +29,15 @@ function Header() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light ">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-
             <img
               src="/Logo1.jpg"
               width="120"
-              height="50"
+              height="30"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
           </Link>
           {/* <Navbar brand={icon} toggleNavKey={0} /> */}
-
-
 
           <button
             className="navbar-toggler"
@@ -76,7 +63,6 @@ function Header() {
                   >
                     <FaUser />
                     {user && user.email.substring(0, user.email.length - 10)}
-
                   </Link>
                 </li>
               )}

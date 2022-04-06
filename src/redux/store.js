@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./rootReducer";
 
@@ -10,6 +10,6 @@ const initialStore = {
   },
   wishlistReducer: {
     wishlistItems: JSON.parse(localStorage.getItem("wishlistItems")) ?? [],
-  }
+  },
 };
 export const store = createStore(rootReducer, initialStore, composeEnhancers());

@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  setDoc,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import fireDB from "../fireConfig";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
@@ -22,9 +15,8 @@ function ShopkeeperRegisterPage() {
   const [shopAddress, setShopAddress] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
-  const data = JSON.parse(localStorage.getItem("currentShopUser"));
+  //const data = JSON.parse(localStorage.getItem("currentShopUser"));
   const auth = getAuth();
-
 
   const register = async () => {
     try {
@@ -37,8 +29,6 @@ function ShopkeeperRegisterPage() {
         cno,
         shopAddress,
         imageURL,
-
-
       });
       const result = await createUserWithEmailAndPassword(
         auth,
@@ -114,9 +104,7 @@ function ShopkeeperRegisterPage() {
               type="text"
               placeholder="Shop's Image"
               value={imageURL}
-              onChange={(e) =>
-                setImageURL(e.target.value)
-              }
+              onChange={(e) => setImageURL(e.target.value)}
             />
 
             <input
@@ -146,8 +134,6 @@ function ShopkeeperRegisterPage() {
                 setPassword(e.target.value);
               }}
             />
-
-
 
             <button className="my-3 " onClick={register}>
               REGISTER

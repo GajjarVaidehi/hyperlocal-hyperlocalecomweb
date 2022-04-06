@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 import { FaTrash } from "react-icons/fa";
-import fireDB from "../fireConfig";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+//import fireDB from "../fireConfig";
+//import { collection, addDoc, getDocs } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 
 function WishlistPage() {
@@ -31,7 +31,12 @@ function WishlistPage() {
             return (
               <tr>
                 <td>
-                  <img src={item.imageURL} height="80" width="80" />
+                  <img
+                    src={item.imageURL}
+                    height="80"
+                    width="80"
+                    alt="itemImage"
+                  />
                 </td>
                 <td>{item.name}</td>
                 <td>{item.price}</td>
@@ -43,8 +48,6 @@ function WishlistPage() {
           })}
         </tbody>
       </table>
-
-
     </Layout>
   );
 }

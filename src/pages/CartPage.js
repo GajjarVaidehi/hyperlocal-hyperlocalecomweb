@@ -217,7 +217,6 @@ function CartPage() {
           </Button>
         </Modal.Footer>
       </Modal> */}
-
       </div>
     </Layout>
   );
