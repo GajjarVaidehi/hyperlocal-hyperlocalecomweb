@@ -20,6 +20,16 @@ function HomePage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const myStyle = {
+    backgroundImage: 'url(./public/bg-img)',
+    height: '100%',
+    marginTop: '-70px',
+    fontSize: '50px',
+    width: '100%',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -81,8 +91,9 @@ function HomePage() {
   };
 
   return (
-    <Layout loading={loading}>
-      {" "}
+
+    <Layout loading={loading} >
+
       <br />
       <br />
       <br />
@@ -92,6 +103,8 @@ function HomePage() {
         className="d-inline-block align-top bgimg"
         alt="React Bootstrap logo"
       />
+
+
       <h2 className="mt-5 md-5 shop-class">
         <span>&nbsp;&nbsp; Shops Near You &nbsp;&nbsp; </span>
       </h2>
@@ -235,6 +248,8 @@ function HomePage() {
             })}
         </div>
       </div>
+
+
     </Layout>
   );
 }
