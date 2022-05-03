@@ -19,8 +19,6 @@ function AdminPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
-
   useEffect(() => {
     getData();
   }, []);
@@ -55,7 +53,6 @@ function AdminPage() {
         setLoading(false);
       });
 
-
       setUsers(usersArray);
       setShopkeepers(shopkeepersArray);
     } catch (error) {
@@ -71,12 +68,7 @@ function AdminPage() {
         id="uncontrolled-tab-example"
         className="mb-3 mt-3"
       >
-
-
-        <Tab eventKey="user" title="User" >
-
-
-
+        <Tab eventKey="user" title="User">
           <table className="table mt-3 order">
             <thead>
               <tr>
@@ -89,29 +81,17 @@ function AdminPage() {
             <tbody>
               {users.map((user) => {
                 return (
-
-                  <tr >
-                    <td className="text-center">
-                      {user.name}
-                    </td>
+                  <tr>
+                    <td className="text-center">{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.cno}</td>
-
                   </tr>
-
-
-
                 );
-
               })}
-
             </tbody>
           </table>
-
-
         </Tab>
-        <Tab eventKey="shop" title="Shop" >
-
+        <Tab eventKey="shop" title="Shop">
           <table className="table mt-3 order">
             <thead>
               <tr>
@@ -125,8 +105,7 @@ function AdminPage() {
             <tbody>
               {shopkeepers.map((shop) => {
                 return (
-
-                  <tr >
+                  <tr>
                     <td className="text-center">
                       <img src={shop.imageURL} height="80" width="80" />
                     </td>
@@ -134,22 +113,14 @@ function AdminPage() {
                     <td>{shop.name}</td>
                     <td>{shop.email}</td>
                     <td>{shop.cno}</td>
-
                   </tr>
-
-
-
                 );
-
               })}
-
             </tbody>
           </table>
-
-
         </Tab>
       </Tabs>
-    </Layout >
+    </Layout>
   );
 }
 

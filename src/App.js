@@ -11,8 +11,6 @@ import WishlistPage from "./pages/WishlistPage";
 import FirstPage from "./pages/FirstPage";
 import PaymentPage from "./pages/PaymentPage";
 import ShopInfo from "./pages/ShopInfo";
-import AllShopsPage from "./pages/AllShopsPage";
-import DemoPage from "./pages/DemoPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 
 import ShopkeeperLoginPage from "./pages/ShopkeeperLoginPage";
@@ -34,6 +32,11 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <Routes>
+          <Route path="/login" exact element={<LoginPage />} />
+          <Route path="/first" exact element={<FirstPage />} />
+          <Route path="/register" exact element={<RegisterPage />} />
+          <Route path="/forgot-password" exact element={<ForgotPassword />} />
+          /////CUSTOMER
           <Route
             path="/"
             exact
@@ -62,15 +65,6 @@ function App() {
             }
           />
           <Route
-            path="/shopinfo/:shopkeeperid"
-            exact
-            element={
-              <ProtectedRoutes>
-                <ShopInfo />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
             path="/cart"
             exact
             element={
@@ -88,7 +82,6 @@ function App() {
               </ProtectedRoutes>
             }
           />
-
           <Route
             path="/wishlist"
             exact
@@ -98,27 +91,6 @@ function App() {
               </ProtectedRoutes>
             }
           />
-
-          <Route
-            path="/allshops"
-            exact
-            element={
-              <ProtectedRoutes>
-                <AllShopsPage />
-              </ProtectedRoutes>
-            }
-          />
-
-          <Route
-            path="/shopproducts"
-            exact
-            element={
-              <ProtectedRoutes>
-                <DemoPage />
-              </ProtectedRoutes>
-            }
-          />
-
           <Route
             path="/payment"
             exact
@@ -128,7 +100,7 @@ function App() {
               </ProtectedRoutes>
             }
           />
-
+          //// ADMIN
           <Route
             path="/admin"
             exact
@@ -138,36 +110,19 @@ function App() {
               </ProtectedAdminRoutes>
             }
           />
-
-          <Route
-            path="/adminlogin"
-            exact
-            element={
-
-              <AdminLoginPage />
-
-            }
-          />
-
+          <Route path="/adminlogin" exact element={<AdminLoginPage />} />
+          ////SHOPKEEPER
           <Route path="/shopkeeper" exact element={<ShopkeeperPage />} />
-
           <Route
             path="/shopkeeper/profile"
             exact
             element={<ShopkeeperProfilePage />}
           />
-
-          <Route path="/login" exact element={<LoginPage />} />
-          <Route path="/first" exact element={<FirstPage />} />
-          <Route path="/register" exact element={<RegisterPage />} />
-          <Route path="/forgot-password" exact element={<ForgotPassword />} />
           <Route
             path="/shopkeeper/forgot-password"
             exact
             element={<ForgotPassword />}
           />
-          {/* <Route path="/register" exact element={<RegisterPage />} /> */}
-
           <Route
             path="/shopkeeper/register"
             exact
@@ -177,6 +132,15 @@ function App() {
             path="/shopkeeper/login"
             exact
             element={<ShopkeeperLoginPage />}
+          />
+          <Route
+            path="/shopinfo/:shopkeeperid"
+            exact
+            element={
+              <ProtectedRoutes>
+                <ShopInfo />
+              </ProtectedRoutes>
+            }
           />
         </Routes>
       </BrowserRouter>

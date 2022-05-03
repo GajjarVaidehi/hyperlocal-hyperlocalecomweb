@@ -16,11 +16,10 @@ function ShopkeeperProfilePage() {
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
   const [loading, setLoading] = useState(false);
-  //const [show, setShow] = useState(false);
+
   const currentShopUser = JSON.parse(localStorage.getItem("currentShopUser"));
   const currentEmail = currentShopUser.user.email;
-  //const handleClose = () => setShow(false);
-  //const handleShow = () => setShow(true);
+
   const updateInfo = async () => {
     setLoading(true);
     await setDoc(doc(fireDB, "shopkeepers", id), {

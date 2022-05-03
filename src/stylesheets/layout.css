@@ -178,21 +178,6 @@ textarea {
   margin-top: 50px;
 }
 
-/* 
-.product{
-  width: 350px;
-  height: auto; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
-  margin-right: 24px;
-  transition: all 0.3s ease-in-out;
-  padding: 12px;
-  border-radius: 10px; 
-} */
-
 .choose {
   border-radius: 10px;
   background-color: #d9eff8;
@@ -208,18 +193,6 @@ h2 span {
   background-color: #d9eff8;
   border-radius: 10px;
 }
-
-/* 
-.logo-img {
-  background: url('/public/bg-img.jpg');
-  opacity: 2.8;
-  background-size: auto;
-  height: auto;
-} */
-
-
-
-
 
 @media (max-width: 768px) {
   .product:hover {

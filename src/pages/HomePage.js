@@ -21,13 +21,13 @@ function HomePage() {
   const navigate = useNavigate();
 
   const myStyle = {
-    backgroundImage: 'url(./public/bg-img)',
-    height: '100%',
-    marginTop: '-70px',
-    fontSize: '50px',
-    width: '100%',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
+    backgroundImage: "url(./public/bg-img)",
+    height: "100%",
+    marginTop: "-70px",
+    fontSize: "50px",
+    width: "100%",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
   };
 
   useEffect(() => {
@@ -91,9 +91,7 @@ function HomePage() {
   };
 
   return (
-
-    <Layout loading={loading} >
-
+    <Layout loading={loading}>
       <br />
       <br />
       <br />
@@ -103,7 +101,6 @@ function HomePage() {
         className="d-inline-block align-top bgimg"
         alt="React Bootstrap logo"
       />
-
 
       <h2 className="mt-5 md-5 shop-class">
         <span>&nbsp;&nbsp; Shops Near You &nbsp;&nbsp; </span>
@@ -134,33 +131,12 @@ function HomePage() {
                       </div>
                       <p style={{ fontSize: "3vmin" }}>{shop.shopName}</p>
                       <p style={{ fontSize: "2vmin" }}>{shop.shopAddress}</p>
-
-                      <div className="d-flex align-items-center">
-                        <button
-                          className="view-button "
-                          onClick={() => {
-                            navigate("/shopproducts");
-                          }}
-                        >
-                          VIEW
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
         </div>
-
-        {/* <button
-            className="view-button "
-            style={{ float: "right" }}
-            onClick={() => {
-              navigate("/allshops");
-            }}
-          >
-            VIEW MORE
-          </button> */}
 
         <br />
 
@@ -248,8 +224,6 @@ function HomePage() {
             })}
         </div>
       </div>
-
-
     </Layout>
   );
 }

@@ -124,30 +124,25 @@ function AdminPage() {
     }
   };
 
-
   const acceptOrder = async () => {
     hidden = true;
     if (hidden) {
-      document.getElementById('accept').style.visibility = 'hidden';
+      document.getElementById("accept").style.visibility = "hidden";
       // document.getElementById('decline').style.visibility = 'hidden';
-      document.getElementById('acceptText').className = "show";
+      document.getElementById("acceptText").className = "show";
     }
     toast.success("Order accepted!");
-
   };
 
   const declineOrder = async () => {
     hidden = true;
     if (hidden) {
-      document.getElementById('accept').style.visibility = 'hidden';
-      document.getElementById('decline').style.visibility = 'hidden';
-      document.getElementById('declineText').className = "show";
+      document.getElementById("accept").style.visibility = "hidden";
+      document.getElementById("decline").style.visibility = "hidden";
+      document.getElementById("declineText").className = "show";
     }
     toast.error("Order Declined!");
-
   };
-
-
 
   const deleteProduct = async (item) => {
     try {
@@ -177,7 +172,7 @@ function AdminPage() {
         id="uncontrolled-tab-example"
         className="mb-3 mt-3 shopkeeper-tab"
       >
-        <Tab eventKey="products" title="Products" >
+        <Tab eventKey="products" title="Products">
           <div className="d-flex justify-content-between ">
             <h3>Products List</h3>
             <button onClick={addHandler}>Add Product</button>
@@ -244,13 +239,12 @@ function AdminPage() {
                 <input
                   className="form-control"
                   type="text"
-                  placeholder="Image URL"
+                  placeholder="Image"
                   value={product.imageURL}
                   onChange={(e) =>
                     setProduct({ ...product, imageURL: e.target.value })
                   }
                 />
-
 
                 <input
                   type="number"
@@ -271,32 +265,25 @@ function AdminPage() {
                     setProduct({ ...product, description: e.target.value })
                   }
                 />
-                {/* <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Category"
+
+                <label for="category">&nbsp;&nbsp;&nbsp;Select category:</label>
+
+                <select
+                  name="category"
+                  id="category"
                   value={product.category}
                   onChange={(e) =>
                     setProduct({ ...product, category: e.target.value })
                   }
-                />
-                 */}
-
-                <label for="category">&nbsp;&nbsp;&nbsp;Select category:</label>
-
-                <select name="category" id="category" value={product.category}
-                  onChange={(e) =>
-                    setProduct({ ...product, category: e.target.value })
-                  }>
+                >
                   <option value="">Category</option>
-                  <option value="sports" >Sports</option>
+                  <option value="sports">Sports</option>
                   <option value="toys">Toys/Games</option>
-                  <option value="grocery" >Grocery</option>
+                  <option value="grocery">Grocery</option>
                   <option value="fashion">Fashion</option>
                   <option value="dairy">Dairy</option>
                   <option value="footwear">Footwear</option>
                   <option value="electronics">Electronics</option>
-
                 </select>
 
                 <hr />
@@ -319,7 +306,6 @@ function AdminPage() {
             return (
               <table className="table mt-3 ">
                 <tbody>
-
                   {order.cartItems
                     .filter((cartItem) => {
                       return cartItem.ownerId === data.user.uid;
@@ -332,13 +318,7 @@ function AdminPage() {
                           </td>
                           <td>{item.name}</td>
                           <td>{item.price}</td>
-                          <button className="accept" id="accept" onClick={acceptOrder}>Accept Order</button>
-                          <input className="hide form-control" type="text" id="acceptText" value="Order Accepted" />
-                          {/* <button className="decline" id="decline" onClick={declineOrder}>Decline Order</button>
-                          <input className="hide form-control" type="text" id="declineText" value="Order Declined" /> */}
                         </tr>
-
-
                       );
                     })}
                 </tbody>
@@ -346,7 +326,6 @@ function AdminPage() {
             );
           })}
         </Tab>
-
       </Tabs>
     </Layout>
   );

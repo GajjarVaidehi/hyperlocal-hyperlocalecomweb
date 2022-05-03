@@ -29,28 +29,6 @@ function CartPage() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const updateQty = (action, id) => {
-  //   if (action == "add") {
-
-  //     setQty(qty + 1);
-  //     cartItems.map((item) => {
-  //       if (item.id === id)
-  //         item.qty += 1;
-  //     });
-
-  //     console.log(cartItems);
-
-  //   }
-
-  //   if (action == "remove") {
-  //     setQty(qty - 1);
-  //     cartItems.map((item) => {
-  //       item.qty -= 1;
-  //     });
-
-  //   }
-  // };
-
   useEffect(() => {
     let temp = 0;
     cartItems.forEach((cartItems) => {
@@ -125,19 +103,7 @@ function CartPage() {
                   <td>Rs.{parseFloat(item.price)}/-</td>
 
                   <td>{item.ownerShop}</td>
-                  {/* <td>
-                  <div className="group flex items-center gap-2 ml-auto cursor-pointer">
-                    <div whiletap={{ scale: 0.75 }} onClick={() => updateQty("remove", item.id)}>
-                      <BiMinus className="text-gray-50" />
-                    </div>
-                    <p className="w-5 h-5 rounded-sm text-gray-50 flex items-center justify-center">
-                      {qty}
-                    </p>
-                    <div whiletap={{ scale: 0.75 }} onClick={() => updateQty("add", item.id)}>
-                      <BiPlus className="text-gray-50" />
-                    </div>
-                  </div>
-                </td> */}
+
                   <td>
                     <FaTrash onClick={() => deleteFromCart(item)} />
                   </td>
@@ -156,67 +122,6 @@ function CartPage() {
             <button>CONTINUE</button>
           </Link>
         </div>
-
-        {/* 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>ADD YOUR ADDRESS DETAILS</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {" "}
-          <div className="register-form">
-            <hr />
-
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <textArea
-              className="form-control"
-              rows={3}
-              type="text"
-              placeholder="Address"
-              value={address}
-              onChange={(e) => {
-                setAddress(e.target.value);
-              }}
-            />
-
-            <input
-              type="number"
-              className="form-control"
-              placeholder="Pincode"
-              value={pincode}
-              onChange={(e) => {
-                setPincode(e.target.value);
-              }}
-            />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Contact No"
-              value={phoneNo}
-              onChange={(e) => {
-                setPhoneNo(e.target.value);
-              }}
-            />
-            <hr />
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={placeOrder}>
-            SELECT PAYMENT MODE
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
       </div>
     </Layout>
   );
